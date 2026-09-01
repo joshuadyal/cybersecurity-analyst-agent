@@ -18,9 +18,8 @@ if add_documents:
 
     with open("incidents.json", "r", encoding="utf-8") as f:
         incident_data = json.load(f)
-    # print(incident_data)
+
     for incident in incident_data["incidents"]:
-        print(incident)
         document = Document(
             page_content=f"""
                 Title: {incident["title"]}
@@ -54,7 +53,7 @@ vector_store = Chroma(
 if add_documents:
     vector_store.add_documents(documents=documents, ids=ids)
 
-number_of_incidents_to_return = 5
+number_of_incidents_to_return = 10
 retriever = vector_store.as_retriever(
     search_kwargs={"k": number_of_incidents_to_return}
 )

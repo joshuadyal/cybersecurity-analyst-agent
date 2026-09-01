@@ -30,83 +30,1384 @@
     },
     {
       "id": "INC-002",
-      "title": "Ransomware Infection in Production Server",
-      "date": "2025-03-15",
-      "severity": "Critical",
-      "category": "Malware",
-      "status": "Mitigated",
-      "affected_systems": ["Production-DB", "Internal-Server"],
+      "title": "Phishing Campaign Targeting Finance Staff",
+      "date": "2025-03-21",
+      "severity": "Medium",
+      "category": "Phishing",
+      "status": "Resolved",
+      "affected_systems": ["Microsoft 365", "Email", "Finance Workstations"],
       "indicators": [
-        "Sudden system slowdown",
-        "Unusual network traffic",
-        "Encrypted files"
+        "31 phishing emails",
+        "Malicious login page",
+        "Three users clicked the link"
       ],
-      "summary": "Ransomware encrypted critical database files.",
-      "root_cause": "Exploited unpatched vulnerability in the database server.",
-      "attack_techniques": ["T1059.001", "T1035"],
+      "summary": "Finance employees received convincing emails directing them to a fraudulent Microsoft 365 sign-in page.",
+      "root_cause": "An attacker used a lookalike domain to harvest employee credentials.",
+      "attack_techniques": ["T1566.002", "T1056.002"],
       "response": [
-        "Isolated infected server",
-        "Recovered from backup",
-        "Applied security patches"
+        "Removed phishing emails",
+        "Reset affected passwords",
+        "Revoked active sessions",
+        "Blocked the malicious domain"
       ],
-      "outcome": "Data was restored from backups. No data exfiltration detected.",
+      "outcome": "Two credentials were exposed but MFA prevented account takeover.",
       "lessons_learned": [
-        "Ensure regular backups",
-        "Patch all systems promptly"
+        "Strengthen phishing awareness",
+        "Improve lookalike-domain monitoring"
       ]
     },
     {
       "id": "INC-003",
-      "title": "Phishing Campaign Targeting Finance Team",
-      "date": "2025-03-16",
-      "severity": "High",
-      "category": "Phishing",
-      "status": "Investigating",
-      "affected_systems": ["Finance-Portal", "Email-Server"],
+      "title": "Malware Detected on Sales Laptop",
+      "date": "2025-04-02",
+      "severity": "Medium",
+      "category": "Malware",
+      "status": "Resolved",
+      "affected_systems": ["Sales Laptop", "Endpoint Management"],
       "indicators": [
-        "Suspicious email attachments",
-        "Unusual login activity",
-        "Phishing URLs detected"
+        "Suspicious executable",
+        "Outbound connection to known malicious IP",
+        "Unexpected scheduled task"
       ],
-      "summary": "Email spoofing attempt targeting finance team members.",
-      "root_cause": "Phishing links sent via email to mimic internal systems.",
-      "attack_techniques": ["T1566", "T1008"],
+      "summary": "Endpoint protection detected a malicious executable on a sales employee's laptop.",
+      "root_cause": "The user downloaded a fake PDF utility from an untrusted website.",
+      "attack_techniques": ["T1204.002", "T1059.001"],
       "response": [
-        "Removed phishing links",
-        "Notified affected users",
-        "Scanned email servers"
+        "Isolated the laptop",
+        "Removed malware",
+        "Reset user credentials",
+        "Performed endpoint scan"
       ],
-      "outcome": "No accounts were compromised. Phishing attempt neutralized.",
+      "outcome": "Malware was contained to a single endpoint with no confirmed lateral movement.",
       "lessons_learned": [
-        "Enhance email filtering",
-        "Conduct phishing awareness training"
+        "Restrict unapproved software",
+        "Improve endpoint isolation procedures"
       ]
     },
     {
       "id": "INC-004",
-      "title": "Denial of Service Attack on Web Portal",
-      "date": "2025-03-17",
-      "severity": "Medium",
-      "category": "DoS",
+      "title": "Suspicious PowerShell Activity",
+      "date": "2025-04-09",
+      "severity": "High",
+      "category": "Execution",
       "status": "Resolved",
-      "affected_systems": ["Web-Portal", "Load-Balancer"],
+      "affected_systems": ["Windows Server", "Active Directory"],
       "indicators": [
-        "High traffic volume",
-        "Service outages",
-        "Unusual API calls"
+        "Encoded PowerShell command",
+        "Unusual administrator account usage",
+        "Outbound network connection"
       ],
-      "summary": "Web portal became unavailable due to traffic surge.",
-      "root_cause": "DDoS attack using botnet traffic.",
-      "attack_techniques": ["T1562.001"],
+      "summary": "A server generated an alert for encoded PowerShell execution under an administrator account.",
+      "root_cause": "A compromised service account was used to execute a malicious script.",
+      "attack_techniques": ["T1059.001", "T1027"],
       "response": [
-        "Activated DDoS mitigation",
-        "Blocked malicious IPs",
-        "Monitored traffic"
+        "Disabled the service account",
+        "Isolated the server",
+        "Reviewed PowerShell logs",
+        "Rotated credentials"
       ],
-      "outcome": "Service restored within 2 hours. No data loss reported.",
+      "outcome": "The attacker executed commands but did not obtain persistent access.",
       "lessons_learned": [
-        "Implement DDoS protection",
-        "Monitor traffic patterns"
+        "Monitor privileged PowerShell activity",
+        "Reduce service account privileges"
+      ]
+    },
+    {
+      "id": "INC-005",
+      "title": "Ransomware Attempt on File Server",
+      "date": "2025-04-18",
+      "severity": "Critical",
+      "category": "Ransomware",
+      "status": "Contained",
+      "affected_systems": ["File Server", "Shared Drives", "Windows Endpoints"],
+      "indicators": [
+        "Rapid file renaming",
+        "Multiple encryption extensions",
+        "Unusual SMB activity"
+      ],
+      "summary": "Endpoint protection detected behaviour consistent with ransomware encryption on a shared file server.",
+      "root_cause": "A compromised workstation attempted to access shared folders using stolen credentials.",
+      "attack_techniques": ["T1486", "T1078"],
+      "response": [
+        "Disconnected affected workstation",
+        "Disabled compromised account",
+        "Blocked SMB traffic",
+        "Restored affected files from backup"
+      ],
+      "outcome": "Approximately 120 files were encrypted before containment. Backups allowed full recovery.",
+      "lessons_learned": [
+        "Segment file shares",
+        "Improve ransomware behaviour detection",
+        "Test backups regularly"
+      ]
+    },
+    {
+      "id": "INC-006",
+      "title": "Exposed Cloud Storage Bucket",
+      "date": "2025-04-25",
+      "severity": "High",
+      "category": "Cloud Misconfiguration",
+      "status": "Resolved",
+      "affected_systems": ["Cloud Storage", "Customer Data Platform"],
+      "indicators": [
+        "Public bucket permissions",
+        "External access logs",
+        "Sensitive files accessible without authentication"
+      ],
+      "summary": "A cloud storage bucket containing internal documents was discovered with public read access.",
+      "root_cause": "A deployment template applied overly permissive storage permissions.",
+      "attack_techniques": ["T1530"],
+      "response": [
+        "Removed public access",
+        "Reviewed access logs",
+        "Rotated exposed credentials",
+        "Audited cloud permissions"
+      ],
+      "outcome": "The bucket was publicly accessible for approximately six hours. No confirmed bulk download was identified.",
+      "lessons_learned": [
+        "Automate cloud configuration checks",
+        "Use least-privilege storage policies"
+      ]
+    },
+    {
+      "id": "INC-007",
+      "title": "Brute Force Against VPN Gateway",
+      "date": "2025-05-03",
+      "severity": "Medium",
+      "category": "Credential Attack",
+      "status": "Resolved",
+      "affected_systems": ["VPN", "Identity Provider"],
+      "indicators": [
+        "2,300 failed authentication attempts",
+        "Repeated attempts against 74 accounts",
+        "Multiple foreign IP ranges"
+      ],
+      "summary": "The corporate VPN was targeted by an automated credential attack.",
+      "root_cause": "Internet-facing VPN authentication allowed excessive login attempts.",
+      "attack_techniques": ["T1110.001"],
+      "response": [
+        "Blocked attacking IP ranges",
+        "Enabled rate limiting",
+        "Reset targeted credentials",
+        "Increased authentication monitoring"
+      ],
+      "outcome": "No successful authentication was identified.",
+      "lessons_learned": [
+        "Enforce adaptive rate limiting",
+        "Expand identity threat monitoring"
+      ]
+    },
+    {
+      "id": "INC-008",
+      "title": "SQL Injection on Customer Portal",
+      "date": "2025-05-11",
+      "severity": "High",
+      "category": "Web Application Attack",
+      "status": "Resolved",
+      "affected_systems": ["Customer Portal", "Customer Database"],
+      "indicators": [
+        "SQL syntax in HTTP parameters",
+        "Database errors",
+        "Repeated requests to search endpoint"
+      ],
+      "summary": "Application monitoring detected attempted SQL injection against a customer-facing search function.",
+      "root_cause": "A legacy endpoint constructed database queries using unsanitized user input.",
+      "attack_techniques": ["T1190", "T1059"],
+      "response": [
+        "Disabled vulnerable endpoint",
+        "Deployed input validation",
+        "Reviewed database logs",
+        "Performed application security testing"
+      ],
+      "outcome": "The vulnerability was exploited to retrieve limited non-sensitive records. No administrative database access occurred.",
+      "lessons_learned": [
+        "Use parameterized queries",
+        "Include security testing in application releases"
+      ]
+    },
+    {
+      "id": "INC-009",
+      "title": "Suspicious Login from Impossible Location",
+      "date": "2025-05-19",
+      "severity": "Medium",
+      "category": "Account Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Microsoft 365", "Identity Provider"],
+      "indicators": [
+        "Two geographically distant logins within 18 minutes",
+        "New browser fingerprint",
+        "Mailbox access"
+      ],
+      "summary": "Identity monitoring detected an impossible-travel event for an employee account.",
+      "root_cause": "The user's password had been reused on an external website that suffered a credential leak.",
+      "attack_techniques": ["T1078.004"],
+      "response": [
+        "Reset password",
+        "Revoked sessions",
+        "Enabled MFA",
+        "Reviewed mailbox activity"
+      ],
+      "outcome": "The attacker accessed email for approximately 20 minutes but did not alter account permissions.",
+      "lessons_learned": [
+        "Enforce MFA universally",
+        "Monitor compromised credentials"
+      ]
+    },
+    {
+      "id": "INC-010",
+      "title": "DNS Tunnelling Detected",
+      "date": "2025-05-27",
+      "severity": "High",
+      "category": "Command and Control",
+      "status": "Resolved",
+      "affected_systems": ["DNS", "Developer Workstation"],
+      "indicators": [
+        "High-entropy DNS queries",
+        "Large query volume",
+        "Repeated requests to newly registered domain"
+      ],
+      "summary": "Network monitoring identified DNS traffic consistent with command-and-control tunnelling.",
+      "root_cause": "A developer workstation was infected with an information-stealing malware family.",
+      "attack_techniques": ["T1071.004"],
+      "response": [
+        "Isolated endpoint",
+        "Blocked domain",
+        "Removed malware",
+        "Reviewed DNS telemetry"
+      ],
+      "outcome": "Small amounts of browser metadata were transmitted before containment.",
+      "lessons_learned": [
+        "Improve DNS anomaly detection",
+        "Restrict endpoint access to untrusted domains"
+      ]
+    },
+    {
+      "id": "INC-011",
+      "title": "Lost Corporate Laptop",
+      "date": "2025-06-04",
+      "severity": "Medium",
+      "category": "Lost Device",
+      "status": "Resolved",
+      "affected_systems": ["Corporate Laptop", "VPN"],
+      "indicators": [
+        "Device missing",
+        "Last check-in from airport network",
+        "Disk encryption enabled"
+      ],
+      "summary": "An employee reported a company laptop missing after business travel.",
+      "root_cause": "The laptop was left unattended in a public area.",
+      "attack_techniques": [],
+      "response": [
+        "Remote locked device",
+        "Revoked VPN certificates",
+        "Disabled user sessions",
+        "Reported device as missing"
+      ],
+      "outcome": "No evidence of data access was found. Full-disk encryption protected stored data.",
+      "lessons_learned": [
+        "Reinforce travel security guidance",
+        "Maintain reliable remote lock capability"
+      ]
+    },
+    {
+      "id": "INC-012",
+      "title": "Malicious USB Device Connected",
+      "date": "2025-06-12",
+      "severity": "Medium",
+      "category": "Removable Media",
+      "status": "Resolved",
+      "affected_systems": ["Engineering Workstation", "Endpoint Security"],
+      "indicators": [
+        "Unknown USB device",
+        "Unexpected executable launch",
+        "Endpoint protection alert"
+      ],
+      "summary": "An employee connected an unknown USB device containing a malicious executable.",
+      "root_cause": "The device was found in a company car park and connected out of curiosity.",
+      "attack_techniques": ["T1204.002", "T1091"],
+      "response": [
+        "Isolated workstation",
+        "Removed device",
+        "Scanned endpoint",
+        "Disabled removable media access"
+      ],
+      "outcome": "Execution was blocked before malware established persistence.",
+      "lessons_learned": [
+        "Block unauthorised USB devices",
+        "Train staff on found-media risks"
+      ]
+    },
+    {
+      "id": "INC-013",
+      "title": "Web Server Defacement",
+      "date": "2025-06-20",
+      "severity": "High",
+      "category": "Web Application Attack",
+      "status": "Resolved",
+      "affected_systems": ["Public Web Server", "Web Application"],
+      "indicators": [
+        "Homepage modification",
+        "Unexpected administrator login",
+        "New web shell file"
+      ],
+      "summary": "The public website was modified by an unauthorised user and displayed attacker-controlled content.",
+      "root_cause": "An outdated content management system plugin contained a known vulnerability.",
+      "attack_techniques": ["T1190", "T1505.003"],
+      "response": [
+        "Removed web shell",
+        "Restored website",
+        "Patched vulnerable plugin",
+        "Rotated administrative credentials"
+      ],
+      "outcome": "The website was unavailable for 34 minutes. No customer database access was identified.",
+      "lessons_learned": [
+        "Patch internet-facing applications quickly",
+        "Monitor web directories for unexpected files"
+      ]
+    },
+    {
+      "id": "INC-014",
+      "title": "Insider Data Exfiltration Attempt",
+      "date": "2025-06-29",
+      "severity": "High",
+      "category": "Data Loss",
+      "status": "Investigated",
+      "affected_systems": [
+        "File Server",
+        "Cloud Storage",
+        "Employee Workstation"
+      ],
+      "indicators": [
+        "Large archive creation",
+        "Unusual cloud upload",
+        "Access to unrelated departments' files"
+      ],
+      "summary": "A user attempted to collect and upload a large volume of internal documents shortly before leaving the company.",
+      "root_cause": "The employee intentionally attempted to retain company information after their resignation.",
+      "attack_techniques": ["T1560.001", "T1567.002"],
+      "response": [
+        "Suspended account",
+        "Blocked upload destination",
+        "Preserved forensic evidence",
+        "Reviewed file access logs"
+      ],
+      "outcome": "Approximately 1.8 GB of data was staged but the upload was blocked.",
+      "lessons_learned": [
+        "Improve insider-risk monitoring",
+        "Review access immediately during offboarding"
+      ]
+    },
+    {
+      "id": "INC-015",
+      "title": "Credential Harvesting via Fake SSO Portal",
+      "date": "2025-07-07",
+      "severity": "High",
+      "category": "Phishing",
+      "status": "Resolved",
+      "affected_systems": ["SSO", "Microsoft 365", "Email"],
+      "indicators": [
+        "Lookalike SSO domain",
+        "Captured usernames",
+        "Multiple login attempts from attacker infrastructure"
+      ],
+      "summary": "Employees were directed to a counterfeit SSO portal designed to capture corporate credentials.",
+      "root_cause": "A targeted phishing campaign used a compromised marketing account to send trusted-looking messages.",
+      "attack_techniques": ["T1566.002", "T1056.002"],
+      "response": [
+        "Blocked domain",
+        "Reset exposed credentials",
+        "Revoked sessions",
+        "Added email detection rules"
+      ],
+      "outcome": "Five credentials were submitted, but MFA prevented successful account takeover.",
+      "lessons_learned": [
+        "Use phishing-resistant MFA",
+        "Monitor newly registered lookalike domains"
+      ]
+    },
+    {
+      "id": "INC-016",
+      "title": "Cryptomining on Cloud Instance",
+      "date": "2025-07-15",
+      "severity": "Medium",
+      "category": "Cloud Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Cloud Compute", "Cloud IAM"],
+      "indicators": [
+        "CPU usage above 95%",
+        "Mining pool connections",
+        "Unexpected cloud instance"
+      ],
+      "summary": "A cloud account was used to launch an instance running cryptocurrency mining software.",
+      "root_cause": "A leaked API key allowed an attacker to access the cloud environment.",
+      "attack_techniques": ["T1588.006", "T1496"],
+      "response": [
+        "Revoked API key",
+        "Terminated rogue instance",
+        "Reviewed IAM activity",
+        "Rotated cloud credentials"
+      ],
+      "outcome": "The attacker incurred approximately £180 in cloud charges. No production data was accessed.",
+      "lessons_learned": [
+        "Use short-lived cloud credentials",
+        "Alert on unusual resource creation"
+      ]
+    },
+    {
+      "id": "INC-017",
+      "title": "Suspicious Scheduled Task Persistence",
+      "date": "2025-07-23",
+      "severity": "High",
+      "category": "Persistence",
+      "status": "Resolved",
+      "affected_systems": ["Windows Workstation", "Endpoint Management"],
+      "indicators": [
+        "Unknown scheduled task",
+        "Executable in user profile",
+        "Task created outside software deployment window"
+      ],
+      "summary": "Security monitoring detected a suspicious scheduled task configured to execute a binary at user logon.",
+      "root_cause": "A trojanised installer was executed by an employee.",
+      "attack_techniques": ["T1053.005", "T1204.002"],
+      "response": [
+        "Isolated workstation",
+        "Removed scheduled task",
+        "Deleted malicious executable",
+        "Scanned endpoint"
+      ],
+      "outcome": "Persistence was removed before additional payloads were downloaded.",
+      "lessons_learned": [
+        "Monitor scheduled task creation",
+        "Restrict executable downloads"
+      ]
+    },
+    {
+      "id": "INC-018",
+      "title": "Exploitation of Unpatched VPN Appliance",
+      "date": "2025-08-01",
+      "severity": "Critical",
+      "category": "Vulnerability Exploitation",
+      "status": "Resolved",
+      "affected_systems": ["VPN Appliance", "Remote Access Infrastructure"],
+      "indicators": [
+        "Exploit requests",
+        "Unexpected administrative process",
+        "New configuration change"
+      ],
+      "summary": "An internet-facing VPN appliance was exploited using a known vulnerability that had not yet been patched.",
+      "root_cause": "The appliance remained on a vulnerable firmware version after a delayed maintenance window.",
+      "attack_techniques": ["T1190"],
+      "response": [
+        "Disconnected appliance",
+        "Applied vendor patch",
+        "Rotated credentials",
+        "Reviewed configuration and logs"
+      ],
+      "outcome": "The attacker obtained temporary administrative access but no internal compromise was confirmed.",
+      "lessons_learned": [
+        "Prioritise internet-facing critical vulnerabilities",
+        "Reduce patching maintenance delays"
+      ]
+    },
+    {
+      "id": "INC-019",
+      "title": "Mass Account Lockouts",
+      "date": "2025-08-09",
+      "severity": "Medium",
+      "category": "Credential Attack",
+      "status": "Resolved",
+      "affected_systems": ["Active Directory", "Internal Applications"],
+      "indicators": [
+        "146 account lockouts",
+        "Repeated authentication from one subnet",
+        "Automated login pattern"
+      ],
+      "summary": "A malfunctioning application repeatedly attempted authentication using outdated credentials.",
+      "root_cause": "A service configuration retained an old password after an account credential rotation.",
+      "attack_techniques": [],
+      "response": [
+        "Stopped affected service",
+        "Updated stored credentials",
+        "Unlocked accounts",
+        "Reviewed authentication logs"
+      ],
+      "outcome": "No malicious activity was identified and normal authentication resumed.",
+      "lessons_learned": [
+        "Improve service credential rotation procedures",
+        "Alert on abnormal account lockout patterns"
+      ]
+    },
+    {
+      "id": "INC-020",
+      "title": "Malicious Browser Extension",
+      "date": "2025-08-17",
+      "severity": "Medium",
+      "category": "Endpoint Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Employee Workstations", "Web Browsers"],
+      "indicators": [
+        "Unauthorised browser extension",
+        "Suspicious external requests",
+        "Changed browser settings"
+      ],
+      "summary": "A browser extension installed by several employees was found to collect browsing information.",
+      "root_cause": "Users installed an unapproved extension advertised as a productivity tool.",
+      "attack_techniques": ["T1176"],
+      "response": [
+        "Removed extension",
+        "Blocked extension ID",
+        "Reset affected browser sessions",
+        "Scanned endpoints"
+      ],
+      "outcome": "Browsing metadata may have been exposed. No corporate passwords were recovered by the extension.",
+      "lessons_learned": [
+        "Use managed browser policies",
+        "Restrict extension installation"
+      ]
+    },
+    {
+      "id": "INC-021",
+      "title": "DDoS Against Public API",
+      "date": "2025-08-25",
+      "severity": "High",
+      "category": "Denial of Service",
+      "status": "Mitigated",
+      "affected_systems": ["Public API", "Load Balancer"],
+      "indicators": [
+        "Traffic increased 40x",
+        "Requests from thousands of source IPs",
+        "Elevated API latency"
+      ],
+      "summary": "The public API experienced a distributed denial-of-service attack causing intermittent service degradation.",
+      "root_cause": "Attackers generated high-volume automated requests against an unauthenticated API endpoint.",
+      "attack_techniques": ["T1498.002"],
+      "response": [
+        "Enabled DDoS protection",
+        "Applied rate limits",
+        "Blocked abusive traffic",
+        "Scaled API infrastructure"
+      ],
+      "outcome": "API availability returned to normal after 52 minutes.",
+      "lessons_learned": [
+        "Apply rate limits to public endpoints",
+        "Maintain tested DDoS response procedures"
+      ]
+    },
+    {
+      "id": "INC-022",
+      "title": "Compromised Developer Account",
+      "date": "2025-09-03",
+      "severity": "Critical",
+      "category": "Account Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Git Repository", "CI/CD", "Cloud Environment"],
+      "indicators": [
+        "Login from unfamiliar country",
+        "Repository token creation",
+        "Unexpected pipeline execution"
+      ],
+      "summary": "An attacker compromised a developer account and used it to access source code and CI/CD resources.",
+      "root_cause": "The developer's session token was stolen from an infected workstation.",
+      "attack_techniques": ["T1078.004", "T1550.001"],
+      "response": [
+        "Revoked sessions",
+        "Rotated repository tokens",
+        "Disabled account",
+        "Audited pipeline activity"
+      ],
+      "outcome": "Several repositories were accessed. No malicious production deployment was completed.",
+      "lessons_learned": [
+        "Use short-lived tokens",
+        "Protect developer endpoints with stronger controls"
+      ]
+    },
+    {
+      "id": "INC-023",
+      "title": "Sensitive Data Sent to Personal Email",
+      "date": "2025-09-12",
+      "severity": "Medium",
+      "category": "Data Loss",
+      "status": "Resolved",
+      "affected_systems": ["Email", "Customer Records"],
+      "indicators": [
+        "Large attachment",
+        "Personal email recipient",
+        "Customer information in document"
+      ],
+      "summary": "An employee accidentally emailed a spreadsheet containing customer information to a personal address.",
+      "root_cause": "The employee selected an autocomplete recipient without noticing the incorrect address.",
+      "attack_techniques": [],
+      "response": [
+        "Requested deletion",
+        "Blocked external forwarding temporarily",
+        "Reported incident",
+        "Reviewed data exposure"
+      ],
+      "outcome": "The recipient confirmed deletion and no further distribution was identified.",
+      "lessons_learned": [
+        "Improve data loss prevention controls",
+        "Train staff to verify external recipients"
+      ]
+    },
+    {
+      "id": "INC-024",
+      "title": "Kerberoasting Activity",
+      "date": "2025-09-20",
+      "severity": "High",
+      "category": "Credential Attack",
+      "status": "Resolved",
+      "affected_systems": ["Active Directory", "Domain Controllers"],
+      "indicators": [
+        "Unusual service ticket requests",
+        "Large number of SPNs queried",
+        "Activity from standard user workstation"
+      ],
+      "summary": "Security monitoring detected abnormal Kerberos service ticket requests consistent with credential harvesting.",
+      "root_cause": "A compromised employee workstation was used to request service tickets for offline password cracking.",
+      "attack_techniques": ["T1558.003"],
+      "response": [
+        "Isolated workstation",
+        "Reset service account passwords",
+        "Reviewed domain controller logs",
+        "Removed malware"
+      ],
+      "outcome": "No privileged account compromise was confirmed.",
+      "lessons_learned": [
+        "Use stronger service account passwords",
+        "Monitor abnormal Kerberos ticket activity"
+      ]
+    },
+    {
+      "id": "INC-025",
+      "title": "Internal Port Scanning",
+      "date": "2025-09-28",
+      "severity": "Medium",
+      "category": "Discovery",
+      "status": "Resolved",
+      "affected_systems": ["Internal Network", "Developer Workstation"],
+      "indicators": [
+        "Connections to 1,200 internal ports",
+        "Sequential address scanning",
+        "Unexpected network utility"
+      ],
+      "summary": "A developer workstation performed broad internal network scanning outside normal testing activity.",
+      "root_cause": "An unauthorised security scanning tool was executed on the workstation.",
+      "attack_techniques": ["T1046"],
+      "response": [
+        "Isolated endpoint",
+        "Removed tool",
+        "Reviewed network logs",
+        "Interviewed user"
+      ],
+      "outcome": "No exploitation followed the scanning activity.",
+      "lessons_learned": [
+        "Restrict security tools to authorised systems",
+        "Monitor unusual internal scanning"
+      ]
+    },
+    {
+      "id": "INC-026",
+      "title": "Business Email Compromise",
+      "date": "2025-10-06",
+      "severity": "High",
+      "category": "Email Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Microsoft 365", "Finance Email"],
+      "indicators": [
+        "Mailbox forwarding rule",
+        "Unusual login",
+        "Fraudulent payment request"
+      ],
+      "summary": "An executive mailbox was compromised and used to request an urgent supplier payment.",
+      "root_cause": "The account was compromised after credentials were entered into a phishing page.",
+      "attack_techniques": ["T1078.004", "T1114.003"],
+      "response": [
+        "Reset account",
+        "Removed forwarding rule",
+        "Revoked sessions",
+        "Contacted finance team"
+      ],
+      "outcome": "The fraudulent payment was stopped before funds were transferred.",
+      "lessons_learned": [
+        "Alert on mailbox forwarding rules",
+        "Require payment verification for unusual requests"
+      ]
+    },
+    {
+      "id": "INC-027",
+      "title": "Container Image with Critical Vulnerability",
+      "date": "2025-10-15",
+      "severity": "High",
+      "category": "Supply Chain",
+      "status": "Resolved",
+      "affected_systems": ["Container Registry", "Kubernetes Cluster"],
+      "indicators": [
+        "Critical CVE in image",
+        "Vulnerable base image",
+        "Image deployed to production"
+      ],
+      "summary": "A production container was found to use a base image containing a critical remotely exploitable vulnerability.",
+      "root_cause": "The CI pipeline did not enforce vulnerability scanning before deployment.",
+      "attack_techniques": ["T1190"],
+      "response": [
+        "Removed vulnerable image",
+        "Rebuilt container",
+        "Patched base image",
+        "Added registry scanning"
+      ],
+      "outcome": "No exploitation was detected before the vulnerable image was replaced.",
+      "lessons_learned": [
+        "Enforce image scanning in CI/CD",
+        "Maintain supported base images"
+      ]
+    },
+    {
+      "id": "INC-028",
+      "title": "Suspicious WMI Execution",
+      "date": "2025-10-23",
+      "severity": "High",
+      "category": "Lateral Movement",
+      "status": "Resolved",
+      "affected_systems": ["Windows Servers", "Active Directory"],
+      "indicators": [
+        "Remote WMI process creation",
+        "Administrative credentials",
+        "Execution across three hosts"
+      ],
+      "summary": "Security telemetry detected remote WMI execution from a compromised workstation.",
+      "root_cause": "An attacker used stolen administrative credentials to move between internal systems.",
+      "attack_techniques": ["T1047", "T1078"],
+      "response": [
+        "Disabled compromised accounts",
+        "Isolated hosts",
+        "Reset administrator credentials",
+        "Hunted for additional activity"
+      ],
+      "outcome": "Three servers were accessed but no persistent malware was found.",
+      "lessons_learned": [
+        "Limit administrative credentials",
+        "Monitor remote WMI execution"
+      ]
+    },
+    {
+      "id": "INC-029",
+      "title": "API Key Published to Public Repository",
+      "date": "2025-11-01",
+      "severity": "High",
+      "category": "Credential Exposure",
+      "status": "Resolved",
+      "affected_systems": ["Git Repository", "Cloud API"],
+      "indicators": [
+        "API key in source code",
+        "Public repository commit",
+        "Automated secret scanner alert"
+      ],
+      "summary": "A developer accidentally committed a cloud API key to a public repository.",
+      "root_cause": "Secrets were stored directly in application configuration instead of a secret manager.",
+      "attack_techniques": ["T1552.001"],
+      "response": [
+        "Revoked API key",
+        "Removed secret from repository",
+        "Reviewed cloud activity",
+        "Moved secrets to vault"
+      ],
+      "outcome": "The key was publicly visible for 11 minutes. No unauthorised cloud activity was detected.",
+      "lessons_learned": [
+        "Use secret management systems",
+        "Scan repositories for credentials"
+      ]
+    },
+    {
+      "id": "INC-030",
+      "title": "LDAP Enumeration from Workstation",
+      "date": "2025-11-09",
+      "severity": "Medium",
+      "category": "Discovery",
+      "status": "Resolved",
+      "affected_systems": ["Active Directory", "Employee Workstation"],
+      "indicators": [
+        "High-volume LDAP queries",
+        "Enumeration of groups",
+        "Enumeration of user accounts"
+      ],
+      "summary": "A workstation generated an unusual volume of LDAP queries against the corporate directory.",
+      "root_cause": "A reconnaissance utility was executed after a workstation compromise.",
+      "attack_techniques": ["T1087.002", "T1018"],
+      "response": [
+        "Isolated workstation",
+        "Disabled compromised account",
+        "Reviewed directory logs",
+        "Removed malicious tooling"
+      ],
+      "outcome": "Directory information was enumerated but no privileged changes were made.",
+      "lessons_learned": [
+        "Monitor directory enumeration",
+        "Reduce unnecessary directory visibility"
+      ]
+    },
+    {
+      "id": "INC-031",
+      "title": "Malicious Macro in Spreadsheet",
+      "date": "2025-11-17",
+      "severity": "Medium",
+      "category": "Malware",
+      "status": "Resolved",
+      "affected_systems": ["Email", "Finance Workstation"],
+      "indicators": [
+        "Macro-enabled spreadsheet",
+        "Obfuscated VBA",
+        "Outbound connection after document opening"
+      ],
+      "summary": "A malicious spreadsheet attachment attempted to execute code when opened by a finance employee.",
+      "root_cause": "An attacker sent a weaponised spreadsheet disguised as an invoice.",
+      "attack_techniques": ["T1204.002", "T1059.005"],
+      "response": [
+        "Quarantined attachment",
+        "Isolated endpoint",
+        "Blocked sender domain",
+        "Scanned workstation"
+      ],
+      "outcome": "The payload was blocked before persistence was established.",
+      "lessons_learned": [
+        "Disable macros from untrusted documents",
+        "Improve attachment sandboxing"
+      ]
+    },
+    {
+      "id": "INC-032",
+      "title": "Privilege Escalation on Linux Server",
+      "date": "2025-11-25",
+      "severity": "High",
+      "category": "Privilege Escalation",
+      "status": "Resolved",
+      "affected_systems": ["Linux Application Server", "Application Account"],
+      "indicators": [
+        "Unexpected sudo command",
+        "Modified binary permissions",
+        "New privileged process"
+      ],
+      "summary": "An application account was used to obtain elevated privileges on a Linux server.",
+      "root_cause": "A misconfigured sudo rule allowed the application account to execute a privileged command without sufficient restrictions.",
+      "attack_techniques": ["T1548.003"],
+      "response": [
+        "Removed vulnerable sudo rule",
+        "Rotated credentials",
+        "Reviewed server integrity",
+        "Applied configuration hardening"
+      ],
+      "outcome": "The attacker obtained root privileges briefly but did not access other servers.",
+      "lessons_learned": [
+        "Audit sudo permissions",
+        "Apply least privilege to service accounts"
+      ]
+    },
+    {
+      "id": "INC-033",
+      "title": "Third-Party Supplier Account Compromise",
+      "date": "2025-12-03",
+      "severity": "High",
+      "category": "Third-Party Risk",
+      "status": "Resolved",
+      "affected_systems": ["Supplier Portal", "VPN"],
+      "indicators": [
+        "Supplier account login from unusual IP",
+        "New VPN session",
+        "Large file downloads"
+      ],
+      "summary": "A supplier account was compromised and used to access a restricted partner environment.",
+      "root_cause": "The supplier account used password-only authentication and had a reused password.",
+      "attack_techniques": ["T1078.003"],
+      "response": [
+        "Disabled supplier account",
+        "Revoked VPN access",
+        "Contacted supplier",
+        "Reviewed downloaded files"
+      ],
+      "outcome": "The attacker downloaded internal documentation but no customer data was accessed.",
+      "lessons_learned": [
+        "Require MFA for suppliers",
+        "Review third-party access regularly"
+      ]
+    },
+    {
+      "id": "INC-034",
+      "title": "Endpoint Data Wiper Detected",
+      "date": "2025-12-11",
+      "severity": "Critical",
+      "category": "Destructive Malware",
+      "status": "Contained",
+      "affected_systems": ["Windows Endpoints", "File Shares"],
+      "indicators": [
+        "Rapid file deletion",
+        "Shadow copy deletion",
+        "Suspicious executable"
+      ],
+      "summary": "Endpoint monitoring detected a destructive malware process attempting to delete local and shared files.",
+      "root_cause": "A compromised administrator account was used to deploy a malicious executable.",
+      "attack_techniques": ["T1485", "T1490"],
+      "response": [
+        "Disabled administrator account",
+        "Isolated affected hosts",
+        "Blocked executable hash",
+        "Restored files from backups"
+      ],
+      "outcome": "Limited files were deleted before containment and were recovered from backups.",
+      "lessons_learned": [
+        "Protect backup infrastructure",
+        "Restrict administrator credentials"
+      ]
+    },
+    {
+      "id": "INC-035",
+      "title": "Fake Software Update Campaign",
+      "date": "2025-12-19",
+      "severity": "Medium",
+      "category": "Social Engineering",
+      "status": "Resolved",
+      "affected_systems": ["Employee Workstations", "Web Proxy"],
+      "indicators": [
+        "Fake browser update page",
+        "Downloads from suspicious domain",
+        "Multiple visits to same domain"
+      ],
+      "summary": "Employees were redirected to a fake software update page that attempted to deliver malware.",
+      "root_cause": "Malicious advertising content redirected users from a legitimate website.",
+      "attack_techniques": ["T1189", "T1204.002"],
+      "response": [
+        "Blocked malicious domain",
+        "Removed downloaded files",
+        "Scanned endpoints",
+        "Added web filtering rule"
+      ],
+      "outcome": "Two employees downloaded the fake update but endpoint protection blocked execution.",
+      "lessons_learned": [
+        "Improve web filtering",
+        "Educate users about browser update prompts"
+      ]
+    },
+    {
+      "id": "INC-036",
+      "title": "Cloud IAM Privilege Escalation",
+      "date": "2026-01-07",
+      "severity": "Critical",
+      "category": "Cloud Security",
+      "status": "Resolved",
+      "affected_systems": ["Cloud IAM", "Production Account"],
+      "indicators": [
+        "Unexpected IAM policy change",
+        "New administrator role",
+        "API calls from unfamiliar IP"
+      ],
+      "summary": "An attacker attempted to elevate privileges within the cloud environment using a compromised developer identity.",
+      "root_cause": "A permissive IAM policy allowed the developer role to modify its own permissions.",
+      "attack_techniques": ["T1098.003"],
+      "response": [
+        "Reverted IAM changes",
+        "Disabled compromised identity",
+        "Rotated credentials",
+        "Audited cloud activity"
+      ],
+      "outcome": "The attacker obtained administrative privileges for approximately eight minutes but did not modify production workloads.",
+      "lessons_learned": [
+        "Prevent self-escalation in IAM",
+        "Use just-in-time privileged access"
+      ]
+    },
+    {
+      "id": "INC-037",
+      "title": "Internal Phishing from Compromised Mailbox",
+      "date": "2026-01-15",
+      "severity": "High",
+      "category": "Phishing",
+      "status": "Resolved",
+      "affected_systems": ["Microsoft 365", "Email"],
+      "indicators": [
+        "Malicious messages from internal account",
+        "Credential harvesting URL",
+        "Multiple employee clicks"
+      ],
+      "summary": "A compromised employee mailbox was used to send phishing messages to colleagues.",
+      "root_cause": "The employee account was compromised through a previous external phishing campaign.",
+      "attack_techniques": ["T1078.004", "T1566.002"],
+      "response": [
+        "Secured compromised mailbox",
+        "Removed malicious messages",
+        "Blocked phishing URL",
+        "Reset affected credentials"
+      ],
+      "outcome": "Seven employees clicked the link; MFA prevented account takeover in all cases.",
+      "lessons_learned": [
+        "Detect anomalous internal mail",
+        "Use phishing-resistant MFA"
+      ]
+    },
+    {
+      "id": "INC-038",
+      "title": "Excessive Database Privileges",
+      "date": "2026-01-23",
+      "severity": "Medium",
+      "category": "Access Control",
+      "status": "Resolved",
+      "affected_systems": ["Production Database", "Customer Application"],
+      "indicators": [
+        "Application account queried administrative tables",
+        "Unnecessary write permissions",
+        "Privilege review finding"
+      ],
+      "summary": "A routine access review identified excessive database privileges assigned to an application account.",
+      "root_cause": "Permissions from an earlier migration were never removed.",
+      "attack_techniques": [],
+      "response": [
+        "Removed excessive privileges",
+        "Reviewed database accounts",
+        "Tested application functionality",
+        "Documented required permissions"
+      ],
+      "outcome": "No misuse was identified and the application continued operating normally.",
+      "lessons_learned": [
+        "Perform regular access reviews",
+        "Apply least privilege during migrations"
+      ]
+    },
+    {
+      "id": "INC-039",
+      "title": "Malware Delivered Through Compromised Website",
+      "date": "2026-02-02",
+      "severity": "High",
+      "category": "Drive-by Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Employee Workstations", "Web Proxy"],
+      "indicators": [
+        "Redirect to exploit infrastructure",
+        "Malicious JavaScript",
+        "Endpoint alerts after browsing"
+      ],
+      "summary": "Employees visiting a compromised external website were redirected toward malicious content.",
+      "root_cause": "A third-party website had been compromised and injected with malicious scripts.",
+      "attack_techniques": ["T1189"],
+      "response": [
+        "Blocked compromised website",
+        "Scanned affected endpoints",
+        "Reviewed proxy logs",
+        "Notified users"
+      ],
+      "outcome": "No successful endpoint compromise was confirmed.",
+      "lessons_learned": [
+        "Improve web isolation",
+        "Monitor high-risk external domains"
+      ]
+    },
+    {
+      "id": "INC-040",
+      "title": "Suspicious Data Transfer to External Storage",
+      "date": "2026-02-10",
+      "severity": "High",
+      "category": "Data Exfiltration",
+      "status": "Investigated",
+      "affected_systems": ["Cloud Storage", "Developer Workstation"],
+      "indicators": [
+        "14 GB outbound transfer",
+        "Personal cloud storage account",
+        "Large archive file"
+      ],
+      "summary": "Data loss prevention controls detected a large transfer of source code to an external storage service.",
+      "root_cause": "An employee attempted to move project files to a personal account for convenience while working remotely.",
+      "attack_techniques": ["T1567.002", "T1560.001"],
+      "response": [
+        "Blocked transfer",
+        "Suspended external sharing",
+        "Reviewed accessed files",
+        "Contacted employee"
+      ],
+      "outcome": "The transfer was blocked before completion and no confirmed data loss occurred.",
+      "lessons_learned": [
+        "Strengthen DLP policies",
+        "Provide approved remote file-sharing methods"
+      ]
+    },
+    {
+      "id": "INC-041",
+      "title": "Credential Dumping on Domain Workstation",
+      "date": "2026-02-18",
+      "severity": "Critical",
+      "category": "Credential Theft",
+      "status": "Resolved",
+      "affected_systems": ["Windows Workstation", "Active Directory"],
+      "indicators": [
+        "Credential dumping tool",
+        "Access to LSASS",
+        "Suspicious administrator logins"
+      ],
+      "summary": "Endpoint telemetry detected attempts to extract credentials from a domain-joined workstation.",
+      "root_cause": "A privileged workstation was compromised through a malicious attachment.",
+      "attack_techniques": ["T1003.001", "T1204.002"],
+      "response": [
+        "Isolated workstation",
+        "Reset exposed credentials",
+        "Revoked sessions",
+        "Performed credential hunting"
+      ],
+      "outcome": "Several user credentials may have been exposed, but no domain administrator credentials were recovered.",
+      "lessons_learned": [
+        "Use privileged access workstations",
+        "Monitor credential access attempts"
+      ]
+    },
+    {
+      "id": "INC-042",
+      "title": "Unauthorised Firewall Rule Change",
+      "date": "2026-02-27",
+      "severity": "High",
+      "category": "Network Security",
+      "status": "Resolved",
+      "affected_systems": ["Firewall", "Internal Network"],
+      "indicators": [
+        "New inbound rule",
+        "Rule created outside change window",
+        "Unknown administrator session"
+      ],
+      "summary": "A firewall rule unexpectedly exposed an internal service to the internet.",
+      "root_cause": "An administrator account was compromised and used to modify firewall configuration.",
+      "attack_techniques": ["T1098", "T1078"],
+      "response": [
+        "Removed malicious rule",
+        "Disabled account",
+        "Reviewed firewall logs",
+        "Rotated administrator credentials"
+      ],
+      "outcome": "The service was exposed for 27 minutes. No confirmed exploitation occurred.",
+      "lessons_learned": [
+        "Require approval for firewall changes",
+        "Alert on out-of-hours configuration changes"
+      ]
+    },
+    {
+      "id": "INC-043",
+      "title": "Vulnerable Third-Party Library in Production",
+      "date": "2026-03-08",
+      "severity": "High",
+      "category": "Supply Chain",
+      "status": "Resolved",
+      "affected_systems": ["Web Application", "Build Pipeline"],
+      "indicators": [
+        "Critical dependency vulnerability",
+        "Affected package version",
+        "Public exploit available"
+      ],
+      "summary": "A security scan identified a critical vulnerability in a third-party library used by a production application.",
+      "root_cause": "Dependency updates were not automatically monitored after the application release.",
+      "attack_techniques": ["T1190"],
+      "response": [
+        "Updated dependency",
+        "Rebuilt application",
+        "Performed regression testing",
+        "Reviewed application logs"
+      ],
+      "outcome": "No exploitation was detected before the dependency was patched.",
+      "lessons_learned": [
+        "Automate dependency scanning",
+        "Track vulnerable components continuously"
+      ]
+    },
+    {
+      "id": "INC-044",
+      "title": "SSH Brute Force Against Linux Server",
+      "date": "2026-03-16",
+      "severity": "Medium",
+      "category": "Credential Attack",
+      "status": "Resolved",
+      "affected_systems": ["Linux Server", "SSH"],
+      "indicators": [
+        "9,400 failed SSH logins",
+        "Repeated username enumeration",
+        "Multiple source addresses"
+      ],
+      "summary": "An internet-facing Linux server was subjected to automated SSH brute-force attempts.",
+      "root_cause": "SSH password authentication remained enabled on a public server.",
+      "attack_techniques": ["T1110.001"],
+      "response": [
+        "Disabled password authentication",
+        "Enabled key-based access",
+        "Blocked attacking IPs",
+        "Reviewed SSH logs"
+      ],
+      "outcome": "No successful login was identified.",
+      "lessons_learned": [
+        "Disable password-based SSH authentication",
+        "Use network-level access controls"
+      ]
+    },
+    {
+      "id": "INC-045",
+      "title": "Unauthorised Service Account Creation",
+      "date": "2026-03-24",
+      "severity": "High",
+      "category": "Persistence",
+      "status": "Resolved",
+      "affected_systems": ["Active Directory", "Windows Servers"],
+      "indicators": [
+        "New service account",
+        "Privileged group membership",
+        "Account created outside change window"
+      ],
+      "summary": "A previously unknown service account was discovered with elevated privileges.",
+      "root_cause": "An attacker with administrative access created the account to maintain persistence.",
+      "attack_techniques": ["T1136.002", "T1098"],
+      "response": [
+        "Disabled account",
+        "Removed group membership",
+        "Reset administrator credentials",
+        "Hunted for persistence"
+      ],
+      "outcome": "No use of the account was observed after creation.",
+      "lessons_learned": [
+        "Alert on privileged account creation",
+        "Review service accounts regularly"
+      ]
+    },
+    {
+      "id": "INC-046",
+      "title": "Cloud Storage Data Exposure",
+      "date": "2026-04-05",
+      "severity": "High",
+      "category": "Cloud Misconfiguration",
+      "status": "Resolved",
+      "affected_systems": ["Cloud Storage", "Analytics Platform"],
+      "indicators": [
+        "Anonymous access enabled",
+        "Sensitive analytics files",
+        "External access requests"
+      ],
+      "summary": "A cloud storage container containing internal analytics data was accidentally configured for anonymous access.",
+      "root_cause": "A manual configuration change bypassed the organisation's standard infrastructure-as-code deployment.",
+      "attack_techniques": ["T1530"],
+      "response": [
+        "Disabled anonymous access",
+        "Reviewed access logs",
+        "Removed manual configuration",
+        "Added policy enforcement"
+      ],
+      "outcome": "The data was exposed for approximately two hours. No confirmed download of sensitive records was identified.",
+      "lessons_learned": [
+        "Enforce cloud policies centrally",
+        "Avoid manual production configuration changes"
+      ]
+    },
+    {
+      "id": "INC-047",
+      "title": "Suspicious Remote Desktop Activity",
+      "date": "2026-04-14",
+      "severity": "High",
+      "category": "Lateral Movement",
+      "status": "Resolved",
+      "affected_systems": ["Windows Servers", "Remote Desktop Services"],
+      "indicators": [
+        "Unusual RDP login",
+        "Multiple server connections",
+        "Login outside working hours"
+      ],
+      "summary": "An administrator account connected to several Windows servers through RDP outside normal working hours.",
+      "root_cause": "The administrator's credentials were stolen from an unmanaged personal device.",
+      "attack_techniques": ["T1021.001", "T1078"],
+      "response": [
+        "Disabled account",
+        "Terminated RDP sessions",
+        "Reset credentials",
+        "Reviewed server activity"
+      ],
+      "outcome": "Four servers were accessed. No malicious configuration changes were found.",
+      "lessons_learned": [
+        "Restrict RDP access",
+        "Require managed devices for privileged access"
+      ]
+    },
+    {
+      "id": "INC-048",
+      "title": "Malicious OAuth Application Consent",
+      "date": "2026-04-22",
+      "severity": "High",
+      "category": "Cloud Account Compromise",
+      "status": "Resolved",
+      "affected_systems": ["Microsoft 365", "Identity Provider"],
+      "indicators": [
+        "Unexpected OAuth consent",
+        "Mailbox read permissions",
+        "Application from unknown publisher"
+      ],
+      "summary": "A user granted a malicious third-party application permission to access their corporate mailbox.",
+      "root_cause": "The user approved an OAuth application after following a social-engineering link.",
+      "attack_techniques": ["T1528"],
+      "response": [
+        "Revoked application consent",
+        "Reset credentials",
+        "Revoked sessions",
+        "Audited mailbox access"
+      ],
+      "outcome": "The application accessed a limited number of emails before permissions were revoked.",
+      "lessons_learned": [
+        "Restrict user OAuth consent",
+        "Monitor suspicious application registrations"
+      ]
+    },
+    {
+      "id": "INC-049",
+      "title": "Backup System Access Attempt",
+      "date": "2026-05-03",
+      "severity": "Critical",
+      "category": "Ransomware",
+      "status": "Contained",
+      "affected_systems": ["Backup Server", "Backup Management Console"],
+      "indicators": [
+        "Failed administrator logins",
+        "Unexpected backup deletion requests",
+        "Unusual management console access"
+      ],
+      "summary": "An attacker attempted to access the backup management system during a wider ransomware campaign.",
+      "root_cause": "Credentials stolen from an administrative workstation were reused against the backup platform.",
+      "attack_techniques": ["T1078", "T1490"],
+      "response": [
+        "Disabled compromised account",
+        "Isolated backup console",
+        "Protected backup repositories",
+        "Rotated administrative credentials"
+      ],
+      "outcome": "No backups were deleted or encrypted and recovery infrastructure remained available.",
+      "lessons_learned": [
+        "Isolate backup credentials",
+        "Use immutable backups",
+        "Protect backup management interfaces"
+      ]
+    },
+    {
+      "id": "INC-050",
+      "title": "Data Exfiltration via DNS",
+      "date": "2026-05-17",
+      "severity": "High",
+      "category": "Data Exfiltration",
+      "status": "Resolved",
+      "affected_systems": [
+        "DNS",
+        "Engineering Workstation",
+        "Internal Network"
+      ],
+      "indicators": [
+        "Encoded DNS queries",
+        "High-frequency requests",
+        "Queries containing internal host identifiers"
+      ],
+      "summary": "A compromised engineering workstation attempted to transmit system information through DNS queries.",
+      "root_cause": "An information-stealing malware payload used DNS as a covert communication channel.",
+      "attack_techniques": ["T1048.003", "T1071.004"],
+      "response": [
+        "Isolated workstation",
+        "Blocked malicious domain",
+        "Removed malware",
+        "Reviewed DNS logs"
+      ],
+      "outcome": "Host information was transmitted but no sensitive customer data was identified in the traffic.",
+      "lessons_learned": [
+        "Inspect DNS for encoded traffic",
+        "Improve endpoint detection coverage"
       ]
     }
   ]
