@@ -1,0 +1,113 @@
+{
+  "incidents": [
+    {
+      "id": "INC-001",
+      "title": "Password Spraying Against Privileged Accounts",
+      "date": "2025-03-14",
+      "severity": "High",
+      "category": "Credential Attack",
+      "status": "Resolved",
+      "affected_systems": ["Active Directory", "VPN", "Internal Applications"],
+      "indicators": [
+        "487 failed login attempts",
+        "18 external source IPs",
+        "Activity between 02:00 and 05:00 UTC"
+      ],
+      "summary": "Multiple privileged accounts experienced repeated authentication failures.",
+      "root_cause": "A weak password was used on an externally accessible account.",
+      "attack_techniques": ["T1110.003"],
+      "response": [
+        "Reset affected credentials",
+        "Blocked source IPs",
+        "Enabled MFA",
+        "Reviewed authentication logs"
+      ],
+      "outcome": "One account was compromised. No evidence of privilege escalation or data exfiltration was found.",
+      "lessons_learned": [
+        "Improve password spraying detection",
+        "Enforce MFA on externally accessible accounts"
+      ]
+    },
+    {
+      "id": "INC-002",
+      "title": "Ransomware Infection in Production Server",
+      "date": "2025-03-15",
+      "severity": "Critical",
+      "category": "Malware",
+      "status": "Mitigated",
+      "affected_systems": ["Production-DB", "Internal-Server"],
+      "indicators": [
+        "Sudden system slowdown",
+        "Unusual network traffic",
+        "Encrypted files"
+      ],
+      "summary": "Ransomware encrypted critical database files.",
+      "root_cause": "Exploited unpatched vulnerability in the database server.",
+      "attack_techniques": ["T1059.001", "T1035"],
+      "response": [
+        "Isolated infected server",
+        "Recovered from backup",
+        "Applied security patches"
+      ],
+      "outcome": "Data was restored from backups. No data exfiltration detected.",
+      "lessons_learned": [
+        "Ensure regular backups",
+        "Patch all systems promptly"
+      ]
+    },
+    {
+      "id": "INC-003",
+      "title": "Phishing Campaign Targeting Finance Team",
+      "date": "2025-03-16",
+      "severity": "High",
+      "category": "Phishing",
+      "status": "Investigating",
+      "affected_systems": ["Finance-Portal", "Email-Server"],
+      "indicators": [
+        "Suspicious email attachments",
+        "Unusual login activity",
+        "Phishing URLs detected"
+      ],
+      "summary": "Email spoofing attempt targeting finance team members.",
+      "root_cause": "Phishing links sent via email to mimic internal systems.",
+      "attack_techniques": ["T1566", "T1008"],
+      "response": [
+        "Removed phishing links",
+        "Notified affected users",
+        "Scanned email servers"
+      ],
+      "outcome": "No accounts were compromised. Phishing attempt neutralized.",
+      "lessons_learned": [
+        "Enhance email filtering",
+        "Conduct phishing awareness training"
+      ]
+    },
+    {
+      "id": "INC-004",
+      "title": "Denial of Service Attack on Web Portal",
+      "date": "2025-03-17",
+      "severity": "Medium",
+      "category": "DoS",
+      "status": "Resolved",
+      "affected_systems": ["Web-Portal", "Load-Balancer"],
+      "indicators": [
+        "High traffic volume",
+        "Service outages",
+        "Unusual API calls"
+      ],
+      "summary": "Web portal became unavailable due to traffic surge.",
+      "root_cause": "DDoS attack using botnet traffic.",
+      "attack_techniques": ["T1562.001"],
+      "response": [
+        "Activated DDoS mitigation",
+        "Blocked malicious IPs",
+        "Monitored traffic"
+      ],
+      "outcome": "Service restored within 2 hours. No data loss reported.",
+      "lessons_learned": [
+        "Implement DDoS protection",
+        "Monitor traffic patterns"
+      ]
+    }
+  ]
+}
