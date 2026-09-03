@@ -1,0 +1,335 @@
+{
+  "data": [
+    {
+      "id": "PB-001",
+      "name": "Phishing Incident Response",
+      "version": "2.1",
+      "owner": "Security Operations",
+      "severity": "Medium",
+      "trigger_conditions": [
+        "User reports suspicious email.",
+        "Malicious email detected by security tooling.",
+        "Credential-harvesting URL identified."
+      ],
+      "initial_actions": [
+        "Preserve the original email.",
+        "Collect email headers.",
+        "Identify all recipients.",
+        "Extract URLs and attachments."
+      ],
+      "investigation": [
+        "Determine whether recipients interacted with the email.",
+        "Check authentication logs.",
+        "Check endpoint telemetry.",
+        "Search for related messages."
+      ],
+      "containment": [
+        "Remove malicious messages.",
+        "Block malicious domains.",
+        "Reset credentials if compromise is suspected.",
+        "Revoke active sessions when credentials were exposed."
+      ],
+      "escalation": [
+        "Escalate if credentials were entered.",
+        "Escalate if malware executed.",
+        "Escalate if sensitive information may have been accessed."
+      ],
+      "related_incidents": ["INC-002", "INC-015", "INC-031", "INC-037"]
+    },
+    {
+      "id": "PB-002",
+      "name": "Credential Attack Response",
+      "version": "3.0",
+      "owner": "Identity & Access Team",
+      "severity": "High",
+      "trigger_conditions": [
+        "Password spraying detected.",
+        "Brute-force activity detected.",
+        "Unusual account lockouts occur.",
+        "Suspicious authentication from external infrastructure."
+      ],
+      "initial_actions": [
+        "Preserve authentication logs.",
+        "Identify targeted accounts.",
+        "Identify source IPs and geographic locations.",
+        "Check whether any attempts succeeded."
+      ],
+      "investigation": [
+        "Correlate failed and successful logins.",
+        "Review privileged account activity.",
+        "Check MFA events.",
+        "Look for password reuse indicators.",
+        "Review related VPN or SSH activity."
+      ],
+      "containment": [
+        "Block malicious sources.",
+        "Reset affected credentials.",
+        "Revoke active sessions.",
+        "Enable or enforce MFA.",
+        "Disable compromised accounts when necessary."
+      ],
+      "escalation": [
+        "Escalate confirmed privileged compromise.",
+        "Escalate if lateral movement is detected.",
+        "Escalate if credentials were reused across critical systems."
+      ],
+      "related_incidents": [
+        "INC-001",
+        "INC-007",
+        "INC-019",
+        "INC-024",
+        "INC-044"
+      ]
+    },
+    {
+      "id": "PB-003",
+      "name": "Malware and Endpoint Compromise",
+      "version": "2.4",
+      "owner": "Security Operations",
+      "severity": "High",
+      "trigger_conditions": [
+        "Endpoint protection detects malware.",
+        "Suspicious executable is identified.",
+        "Persistence mechanism is detected.",
+        "User reports unexpected endpoint behaviour."
+      ],
+      "initial_actions": [
+        "Isolate the endpoint.",
+        "Preserve endpoint telemetry.",
+        "Record detected file hash and path.",
+        "Identify logged-in user."
+      ],
+      "investigation": [
+        "Review process execution.",
+        "Check persistence mechanisms.",
+        "Review network connections.",
+        "Search for the same indicators across endpoints.",
+        "Determine whether credentials were exposed."
+      ],
+      "containment": [
+        "Quarantine malicious files.",
+        "Block known indicators.",
+        "Reset exposed credentials.",
+        "Remove persistence.",
+        "Reimage the endpoint when integrity cannot be trusted."
+      ],
+      "escalation": [
+        "Escalate if administrator credentials were exposed.",
+        "Escalate if lateral movement is detected.",
+        "Escalate if sensitive data was accessed."
+      ],
+      "related_incidents": [
+        "INC-003",
+        "INC-017",
+        "INC-035",
+        "INC-039",
+        "INC-041"
+      ]
+    },
+    {
+      "id": "PB-004",
+      "name": "Ransomware Response and Recovery",
+      "version": "4.1",
+      "owner": "Security Operations & Infrastructure",
+      "severity": "Critical",
+      "trigger_conditions": [
+        "Rapid file encryption detected.",
+        "Ransomware note discovered.",
+        "Mass file deletion or encryption detected.",
+        "Backup systems are targeted."
+      ],
+      "initial_actions": [
+        "Isolate affected hosts.",
+        "Disable compromised accounts.",
+        "Protect backup infrastructure.",
+        "Preserve forensic evidence.",
+        "Identify the first affected system."
+      ],
+      "investigation": [
+        "Determine initial access.",
+        "Identify lateral movement.",
+        "Check administrative credential use.",
+        "Assess affected file shares.",
+        "Determine whether backups were accessed."
+      ],
+      "containment": [
+        "Disconnect affected systems.",
+        "Block malicious traffic.",
+        "Disable compromised credentials.",
+        "Restrict SMB access.",
+        "Prevent access to backup management systems."
+      ],
+      "escalation": [
+        "Escalate immediately for widespread encryption.",
+        "Escalate if backups are compromised.",
+        "Escalate if regulated or customer data may have been accessed."
+      ],
+      "related_incidents": ["INC-005", "INC-034", "INC-049"]
+    },
+    {
+      "id": "PB-005",
+      "name": "Cloud Security Incident",
+      "version": "2.2",
+      "owner": "Cloud Security Team",
+      "severity": "High",
+      "trigger_conditions": [
+        "Public cloud resource discovered.",
+        "Unexpected IAM change.",
+        "Unknown cloud resource created.",
+        "Cloud credential exposure detected."
+      ],
+      "initial_actions": [
+        "Identify affected account and resource.",
+        "Preserve cloud audit logs.",
+        "Identify public exposure.",
+        "Identify credentials or roles involved."
+      ],
+      "investigation": [
+        "Review IAM activity.",
+        "Review resource creation and deletion.",
+        "Check network access logs.",
+        "Determine whether data was accessed.",
+        "Review recent infrastructure changes."
+      ],
+      "containment": [
+        "Remove public access.",
+        "Revoke exposed credentials.",
+        "Disable compromised identities.",
+        "Terminate unauthorised resources.",
+        "Restore approved configuration."
+      ],
+      "escalation": [
+        "Escalate if production resources were modified.",
+        "Escalate if sensitive data was exposed.",
+        "Escalate if administrative privileges were obtained."
+      ],
+      "related_incidents": [
+        "INC-006",
+        "INC-016",
+        "INC-027",
+        "INC-036",
+        "INC-046"
+      ]
+    },
+    {
+      "id": "PB-006",
+      "name": "Web Application Attack Response",
+      "version": "2.0",
+      "owner": "Application Security",
+      "severity": "High",
+      "trigger_conditions": [
+        "WAF detects exploitation.",
+        "Application security alert fires.",
+        "Unauthorised web content is discovered.",
+        "Known vulnerable component is identified."
+      ],
+      "initial_actions": [
+        "Preserve application and WAF logs.",
+        "Identify affected endpoint or component.",
+        "Record attacker indicators.",
+        "Assess whether the application is still exploitable."
+      ],
+      "investigation": [
+        "Review HTTP requests.",
+        "Check application errors.",
+        "Review database activity.",
+        "Inspect changed files.",
+        "Validate dependency and plugin versions."
+      ],
+      "containment": [
+        "Disable vulnerable functionality.",
+        "Block malicious requests.",
+        "Patch vulnerable components.",
+        "Restore altered content.",
+        "Rotate affected credentials."
+      ],
+      "escalation": [
+        "Escalate if database access occurred.",
+        "Escalate if a web shell is found.",
+        "Escalate if customer information was accessed."
+      ],
+      "related_incidents": ["INC-008", "INC-013", "INC-043"]
+    },
+    {
+      "id": "PB-007",
+      "name": "Data Loss and Exfiltration Response",
+      "version": "2.3",
+      "owner": "Security Operations & Data Protection",
+      "severity": "High",
+      "trigger_conditions": [
+        "DLP alert fires.",
+        "Unusual external data transfer detected.",
+        "Large archive created.",
+        "Sensitive data sent to an unauthorised destination."
+      ],
+      "initial_actions": [
+        "Preserve relevant logs.",
+        "Identify the data involved.",
+        "Identify the destination.",
+        "Determine the user or process responsible."
+      ],
+      "investigation": [
+        "Determine what data was accessed.",
+        "Review file and cloud audit logs.",
+        "Check whether transfer completed.",
+        "Assess sensitivity and regulatory impact."
+      ],
+      "containment": [
+        "Block the destination.",
+        "Suspend affected accounts when necessary.",
+        "Revoke sharing permissions.",
+        "Preserve evidence before deleting data."
+      ],
+      "escalation": [
+        "Escalate confirmed data loss.",
+        "Escalate possible customer-data exposure.",
+        "Escalate deliberate insider activity."
+      ],
+      "related_incidents": ["INC-014", "INC-023", "INC-040", "INC-050"]
+    },
+    {
+      "id": "PB-008",
+      "name": "Privileged Access Compromise",
+      "version": "3.2",
+      "owner": "Identity & Access Team",
+      "severity": "Critical",
+      "trigger_conditions": [
+        "Suspicious privileged login.",
+        "Unexpected administrator account change.",
+        "Privileged credential dumping detected.",
+        "Unauthorised firewall or IAM change."
+      ],
+      "initial_actions": [
+        "Preserve identity and administrative logs.",
+        "Identify privileged identity.",
+        "Terminate suspicious sessions.",
+        "Record recent privileged actions."
+      ],
+      "investigation": [
+        "Review authentication history.",
+        "Check privilege changes.",
+        "Review administrative commands.",
+        "Hunt for persistence.",
+        "Assess lateral movement."
+      ],
+      "containment": [
+        "Disable compromised identity.",
+        "Reset privileged credentials.",
+        "Revoke sessions and tokens.",
+        "Remove unauthorised accounts or permissions."
+      ],
+      "escalation": [
+        "Escalate immediately for domain or cloud administrator compromise.",
+        "Escalate if production systems were modified.",
+        "Escalate if persistence was established."
+      ],
+      "related_incidents": [
+        "INC-004",
+        "INC-028",
+        "INC-032",
+        "INC-042",
+        "INC-045"
+      ]
+    }
+  ]
+}

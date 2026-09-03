@@ -1,0 +1,467 @@
+{
+  "data": [
+    {
+      "id": "HIST-2025-Q1",
+      "period": "2025-Q1",
+      "total_incidents": 2,
+      "critical_incidents": 0,
+      "high_incidents": 1,
+      "medium_incidents": 1,
+      "phishing_incidents": 1,
+      "malware_incidents": 0,
+      "credential_incidents": 1,
+      "mean_time_to_detect_hours": 8.2,
+      "mean_time_to_respond_hours": 3.1,
+      "false_positive_rate": 14,
+      "major_observations": [
+        "Phishing and social-engineering activity accounted for 1 incident(s).",
+        "Credential and account-related activity accounted for 1 incident(s).",
+        "Security Operations continued to feed recurring lessons into playbooks and policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Credential Attack",
+          "count": 1
+        },
+        {
+          "category": "Phishing",
+          "count": 1
+        }
+      ],
+      "related_incidents": ["INC-001", "INC-002"]
+    },
+    {
+      "id": "HIST-2025-Q2",
+      "period": "2025-Q2",
+      "total_incidents": 12,
+      "critical_incidents": 1,
+      "high_incidents": 6,
+      "medium_incidents": 5,
+      "phishing_incidents": 0,
+      "malware_incidents": 1,
+      "credential_incidents": 2,
+      "mean_time_to_detect_hours": 7.8,
+      "mean_time_to_respond_hours": 3.0,
+      "false_positive_rate": 13,
+      "major_observations": [
+        "Phishing and social-engineering activity accounted for 0 incident(s).",
+        "Credential and account-related activity accounted for 2 incident(s).",
+        "Security Operations continued to feed recurring lessons into playbooks and policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Web Application Attack",
+          "count": 2
+        },
+        {
+          "category": "Malware",
+          "count": 1
+        },
+        {
+          "category": "Execution",
+          "count": 1
+        },
+        {
+          "category": "Ransomware",
+          "count": 1
+        },
+        {
+          "category": "Cloud Misconfiguration",
+          "count": 1
+        }
+      ],
+      "related_incidents": [
+        "INC-003",
+        "INC-004",
+        "INC-005",
+        "INC-006",
+        "INC-007",
+        "INC-008",
+        "INC-009",
+        "INC-010",
+        "INC-011",
+        "INC-012",
+        "INC-013",
+        "INC-014"
+      ]
+    },
+    {
+      "id": "HIST-2025-Q3",
+      "period": "2025-Q3",
+      "total_incidents": 11,
+      "critical_incidents": 2,
+      "high_incidents": 4,
+      "medium_incidents": 5,
+      "phishing_incidents": 1,
+      "malware_incidents": 0,
+      "credential_incidents": 3,
+      "mean_time_to_detect_hours": 7.5,
+      "mean_time_to_respond_hours": 2.9,
+      "false_positive_rate": 12,
+      "major_observations": [
+        "Phishing and social-engineering activity accounted for 1 incident(s).",
+        "Credential and account-related activity accounted for 3 incident(s).",
+        "Security Operations continued to feed recurring lessons into playbooks and policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Credential Attack",
+          "count": 2
+        },
+        {
+          "category": "Phishing",
+          "count": 1
+        },
+        {
+          "category": "Cloud Compromise",
+          "count": 1
+        },
+        {
+          "category": "Persistence",
+          "count": 1
+        },
+        {
+          "category": "Vulnerability Exploitation",
+          "count": 1
+        }
+      ],
+      "related_incidents": [
+        "INC-015",
+        "INC-016",
+        "INC-017",
+        "INC-018",
+        "INC-019",
+        "INC-020",
+        "INC-021",
+        "INC-022",
+        "INC-023",
+        "INC-024",
+        "INC-025"
+      ]
+    },
+    {
+      "id": "HIST-2025-Q4",
+      "period": "2025-Q4",
+      "total_incidents": 10,
+      "critical_incidents": 1,
+      "high_incidents": 6,
+      "medium_incidents": 3,
+      "phishing_incidents": 1,
+      "malware_incidents": 2,
+      "credential_incidents": 2,
+      "mean_time_to_detect_hours": 7.1,
+      "mean_time_to_respond_hours": 2.7,
+      "false_positive_rate": 11,
+      "major_observations": [
+        "Phishing and social-engineering activity accounted for 1 incident(s).",
+        "Credential and account-related activity accounted for 2 incident(s).",
+        "Security Operations continued to feed recurring lessons into playbooks and policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Email Compromise",
+          "count": 1
+        },
+        {
+          "category": "Supply Chain",
+          "count": 1
+        },
+        {
+          "category": "Lateral Movement",
+          "count": 1
+        },
+        {
+          "category": "Credential Exposure",
+          "count": 1
+        },
+        {
+          "category": "Discovery",
+          "count": 1
+        }
+      ],
+      "related_incidents": [
+        "INC-026",
+        "INC-027",
+        "INC-028",
+        "INC-029",
+        "INC-030",
+        "INC-031",
+        "INC-032",
+        "INC-033",
+        "INC-034",
+        "INC-035"
+      ]
+    },
+    {
+      "id": "HIST-2026-Q1",
+      "period": "2026-Q1",
+      "total_incidents": 10,
+      "critical_incidents": 2,
+      "high_incidents": 6,
+      "medium_incidents": 2,
+      "phishing_incidents": 1,
+      "malware_incidents": 1,
+      "credential_incidents": 2,
+      "mean_time_to_detect_hours": 6.8,
+      "mean_time_to_respond_hours": 2.6,
+      "false_positive_rate": 10,
+      "major_observations": [
+        "Phishing and social-engineering activity accounted for 1 incident(s).",
+        "Credential and account-related activity accounted for 2 incident(s).",
+        "Security Operations continued to feed recurring lessons into playbooks and policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Cloud Security",
+          "count": 1
+        },
+        {
+          "category": "Phishing",
+          "count": 1
+        },
+        {
+          "category": "Access Control",
+          "count": 1
+        },
+        {
+          "category": "Drive-by Compromise",
+          "count": 1
+        },
+        {
+          "category": "Data Exfiltration",
+          "count": 1
+        }
+      ],
+      "related_incidents": [
+        "INC-036",
+        "INC-037",
+        "INC-038",
+        "INC-039",
+        "INC-040",
+        "INC-041",
+        "INC-042",
+        "INC-043",
+        "INC-044",
+        "INC-045"
+      ]
+    },
+    {
+      "id": "HIST-2026-Q2",
+      "period": "2026-Q2",
+      "total_incidents": 5,
+      "critical_incidents": 1,
+      "high_incidents": 4,
+      "medium_incidents": 0,
+      "phishing_incidents": 0,
+      "malware_incidents": 0,
+      "credential_incidents": 1,
+      "mean_time_to_detect_hours": 6.4,
+      "mean_time_to_respond_hours": 2.5,
+      "false_positive_rate": 9,
+      "major_observations": [
+        "Phishing and social-engineering activity accounted for 0 incident(s).",
+        "Credential and account-related activity accounted for 1 incident(s).",
+        "Security Operations continued to feed recurring lessons into playbooks and policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Cloud Misconfiguration",
+          "count": 1
+        },
+        {
+          "category": "Lateral Movement",
+          "count": 1
+        },
+        {
+          "category": "Cloud Account Compromise",
+          "count": 1
+        },
+        {
+          "category": "Ransomware",
+          "count": 1
+        },
+        {
+          "category": "Data Exfiltration",
+          "count": 1
+        }
+      ],
+      "related_incidents": [
+        "INC-046",
+        "INC-047",
+        "INC-048",
+        "INC-049",
+        "INC-050"
+      ]
+    },
+    {
+      "id": "HIST-2026-01",
+      "period": "2026-01",
+      "total_incidents": 3,
+      "critical_incidents": 1,
+      "high_incidents": 1,
+      "medium_incidents": 1,
+      "phishing_incidents": 1,
+      "malware_incidents": 0,
+      "credential_incidents": 0,
+      "mean_time_to_detect_hours": 7.2,
+      "mean_time_to_respond_hours": 2.8,
+      "false_positive_rate": 12,
+      "major_observations": [
+        "3 incident(s) were recorded during 2026-01.",
+        "Identity, endpoint, cloud, and application telemetry continued to be used for correlation.",
+        "Recurring lessons were fed back into playbooks and security policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Cloud Security",
+          "count": 1
+        },
+        {
+          "category": "Phishing",
+          "count": 1
+        },
+        {
+          "category": "Access Control",
+          "count": 1
+        }
+      ],
+      "related_incidents": ["INC-036", "INC-037", "INC-038"]
+    },
+    {
+      "id": "HIST-2026-02",
+      "period": "2026-02",
+      "total_incidents": 4,
+      "critical_incidents": 1,
+      "high_incidents": 3,
+      "medium_incidents": 0,
+      "phishing_incidents": 0,
+      "malware_incidents": 1,
+      "credential_incidents": 1,
+      "mean_time_to_detect_hours": 6.9,
+      "mean_time_to_respond_hours": 2.7,
+      "false_positive_rate": 11,
+      "major_observations": [
+        "4 incident(s) were recorded during 2026-02.",
+        "Identity, endpoint, cloud, and application telemetry continued to be used for correlation.",
+        "Recurring lessons were fed back into playbooks and security policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Drive-by Compromise",
+          "count": 1
+        },
+        {
+          "category": "Data Exfiltration",
+          "count": 1
+        },
+        {
+          "category": "Credential Theft",
+          "count": 1
+        },
+        {
+          "category": "Network Security",
+          "count": 1
+        }
+      ],
+      "related_incidents": ["INC-039", "INC-040", "INC-041", "INC-042"]
+    },
+    {
+      "id": "HIST-2026-03",
+      "period": "2026-03",
+      "total_incidents": 3,
+      "critical_incidents": 0,
+      "high_incidents": 2,
+      "medium_incidents": 1,
+      "phishing_incidents": 0,
+      "malware_incidents": 0,
+      "credential_incidents": 1,
+      "mean_time_to_detect_hours": 6.7,
+      "mean_time_to_respond_hours": 2.7,
+      "false_positive_rate": 10,
+      "major_observations": [
+        "3 incident(s) were recorded during 2026-03.",
+        "Identity, endpoint, cloud, and application telemetry continued to be used for correlation.",
+        "Recurring lessons were fed back into playbooks and security policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Supply Chain",
+          "count": 1
+        },
+        {
+          "category": "Credential Attack",
+          "count": 1
+        },
+        {
+          "category": "Persistence",
+          "count": 1
+        }
+      ],
+      "related_incidents": ["INC-043", "INC-044", "INC-045"]
+    },
+    {
+      "id": "HIST-2026-04",
+      "period": "2026-04",
+      "total_incidents": 3,
+      "critical_incidents": 0,
+      "high_incidents": 3,
+      "medium_incidents": 0,
+      "phishing_incidents": 0,
+      "malware_incidents": 0,
+      "credential_incidents": 1,
+      "mean_time_to_detect_hours": 6.4,
+      "mean_time_to_respond_hours": 2.6,
+      "false_positive_rate": 9,
+      "major_observations": [
+        "3 incident(s) were recorded during 2026-04.",
+        "Identity, endpoint, cloud, and application telemetry continued to be used for correlation.",
+        "Recurring lessons were fed back into playbooks and security policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Cloud Misconfiguration",
+          "count": 1
+        },
+        {
+          "category": "Lateral Movement",
+          "count": 1
+        },
+        {
+          "category": "Cloud Account Compromise",
+          "count": 1
+        }
+      ],
+      "related_incidents": ["INC-046", "INC-047", "INC-048"]
+    },
+    {
+      "id": "HIST-2026-05",
+      "period": "2026-05",
+      "total_incidents": 2,
+      "critical_incidents": 1,
+      "high_incidents": 1,
+      "medium_incidents": 0,
+      "phishing_incidents": 0,
+      "malware_incidents": 0,
+      "credential_incidents": 0,
+      "mean_time_to_detect_hours": 6.2,
+      "mean_time_to_respond_hours": 2.5,
+      "false_positive_rate": 9,
+      "major_observations": [
+        "2 incident(s) were recorded during 2026-05.",
+        "Identity, endpoint, cloud, and application telemetry continued to be used for correlation.",
+        "Recurring lessons were fed back into playbooks and security policies."
+      ],
+      "top_categories": [
+        {
+          "category": "Ransomware",
+          "count": 1
+        },
+        {
+          "category": "Data Exfiltration",
+          "count": 1
+        }
+      ],
+      "related_incidents": ["INC-049", "INC-050"]
+    }
+  ]
+}

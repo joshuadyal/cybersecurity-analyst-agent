@@ -1,5 +1,5 @@
 {
-  "incidents": [
+  "data": [
     {
       "id": "INC-001",
       "title": "Password Spraying Against Privileged Accounts",

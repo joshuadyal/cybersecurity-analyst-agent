@@ -1,0 +1,1246 @@
+{
+  "data": [
+    {
+      "id": "SOL-001",
+      "incident_id": "INC-001",
+      "incident_type": "Credential Attack",
+      "problem": "Multiple privileged accounts experienced repeated authentication failures.",
+      "investigation_approach": [
+        "Correlate authentication events.",
+        "Identify targeted privileged accounts.",
+        "Check successful logins after failed attempts.",
+        "Review MFA status."
+      ],
+      "actions_taken": [
+        "Reset affected credentials",
+        "Blocked source IPs",
+        "Enabled MFA",
+        "Reviewed authentication logs"
+      ],
+      "result": "One account was compromised. No evidence of privilege escalation or data exfiltration was found.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Improve password spraying detection",
+        "Enforce MFA on externally accessible accounts"
+      ]
+    },
+    {
+      "id": "SOL-002",
+      "incident_id": "INC-002",
+      "incident_type": "Phishing",
+      "problem": "Finance employees received convincing emails directing them to a fraudulent Microsoft 365 sign-in page.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed phishing emails",
+        "Reset affected passwords",
+        "Revoked active sessions",
+        "Blocked the malicious domain"
+      ],
+      "result": "Two credentials were exposed but MFA prevented account takeover.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Strengthen phishing awareness",
+        "Improve lookalike-domain monitoring"
+      ]
+    },
+    {
+      "id": "SOL-003",
+      "incident_id": "INC-003",
+      "incident_type": "Malware",
+      "problem": "Endpoint protection detected a malicious executable on a sales employee's laptop.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated the laptop",
+        "Removed malware",
+        "Reset user credentials",
+        "Performed endpoint scan"
+      ],
+      "result": "Malware was contained to a single endpoint with no confirmed lateral movement.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Restrict unapproved software",
+        "Improve endpoint isolation procedures"
+      ]
+    },
+    {
+      "id": "SOL-004",
+      "incident_id": "INC-004",
+      "incident_type": "Execution",
+      "problem": "A server generated an alert for encoded PowerShell execution under an administrator account.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled the service account",
+        "Isolated the server",
+        "Reviewed PowerShell logs",
+        "Rotated credentials"
+      ],
+      "result": "The attacker executed commands but did not obtain persistent access.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Monitor privileged PowerShell activity",
+        "Reduce service account privileges"
+      ]
+    },
+    {
+      "id": "SOL-005",
+      "incident_id": "INC-005",
+      "incident_type": "Ransomware",
+      "problem": "Endpoint protection detected behaviour consistent with ransomware encryption on a shared file server.",
+      "investigation_approach": [
+        "Identify the first encrypted files and originating host.",
+        "Check SMB access and credential use.",
+        "Determine whether backup systems were targeted.",
+        "Validate restored files."
+      ],
+      "actions_taken": [
+        "Disconnected affected workstation",
+        "Disabled compromised account",
+        "Blocked SMB traffic",
+        "Restored affected files from backup"
+      ],
+      "result": "Approximately 120 files were encrypted before containment. Backups allowed full recovery.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Segment file shares",
+        "Improve ransomware behaviour detection",
+        "Test backups regularly"
+      ]
+    },
+    {
+      "id": "SOL-006",
+      "incident_id": "INC-006",
+      "incident_type": "Cloud Misconfiguration",
+      "problem": "A cloud storage bucket containing internal documents was discovered with public read access.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed public access",
+        "Reviewed access logs",
+        "Rotated exposed credentials",
+        "Audited cloud permissions"
+      ],
+      "result": "The bucket was publicly accessible for approximately six hours. No confirmed bulk download was identified.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Automate cloud configuration checks",
+        "Use least-privilege storage policies"
+      ]
+    },
+    {
+      "id": "SOL-007",
+      "incident_id": "INC-007",
+      "incident_type": "Credential Attack",
+      "problem": "The corporate VPN was targeted by an automated credential attack.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Blocked attacking IP ranges",
+        "Enabled rate limiting",
+        "Reset targeted credentials",
+        "Increased authentication monitoring"
+      ],
+      "result": "No successful authentication was identified.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Enforce adaptive rate limiting",
+        "Expand identity threat monitoring"
+      ]
+    },
+    {
+      "id": "SOL-008",
+      "incident_id": "INC-008",
+      "incident_type": "Web Application Attack",
+      "problem": "Application monitoring detected attempted SQL injection against a customer-facing search function.",
+      "investigation_approach": [
+        "Review HTTP parameters and application errors.",
+        "Determine whether database queries were altered.",
+        "Check database access logs.",
+        "Retest the vulnerable endpoint after remediation."
+      ],
+      "actions_taken": [
+        "Disabled vulnerable endpoint",
+        "Deployed input validation",
+        "Reviewed database logs",
+        "Performed application security testing"
+      ],
+      "result": "The vulnerability was exploited to retrieve limited non-sensitive records. No administrative database access occurred.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Use parameterized queries",
+        "Include security testing in application releases"
+      ]
+    },
+    {
+      "id": "SOL-009",
+      "incident_id": "INC-009",
+      "incident_type": "Account Compromise",
+      "problem": "Identity monitoring detected an impossible-travel event for an employee account.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Reset password",
+        "Revoked sessions",
+        "Enabled MFA",
+        "Reviewed mailbox activity"
+      ],
+      "result": "The attacker accessed email for approximately 20 minutes but did not alter account permissions.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Enforce MFA universally",
+        "Monitor compromised credentials"
+      ]
+    },
+    {
+      "id": "SOL-010",
+      "incident_id": "INC-010",
+      "incident_type": "Command and Control",
+      "problem": "Network monitoring identified DNS traffic consistent with command-and-control tunnelling.",
+      "investigation_approach": [
+        "Analyse DNS query frequency and entropy.",
+        "Identify queried domains and registration dates.",
+        "Correlate DNS activity with endpoint processes.",
+        "Inspect for data encoded in queries."
+      ],
+      "actions_taken": [
+        "Isolated endpoint",
+        "Blocked domain",
+        "Removed malware",
+        "Reviewed DNS telemetry"
+      ],
+      "result": "Small amounts of browser metadata were transmitted before containment.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Improve DNS anomaly detection",
+        "Restrict endpoint access to untrusted domains"
+      ]
+    },
+    {
+      "id": "SOL-011",
+      "incident_id": "INC-011",
+      "incident_type": "Lost Device",
+      "problem": "An employee reported a company laptop missing after business travel.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Remote locked device",
+        "Revoked VPN certificates",
+        "Disabled user sessions",
+        "Reported device as missing"
+      ],
+      "result": "No evidence of data access was found. Full-disk encryption protected stored data.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Reinforce travel security guidance",
+        "Maintain reliable remote lock capability"
+      ]
+    },
+    {
+      "id": "SOL-012",
+      "incident_id": "INC-012",
+      "incident_type": "Removable Media",
+      "problem": "An employee connected an unknown USB device containing a malicious executable.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated workstation",
+        "Removed device",
+        "Scanned endpoint",
+        "Disabled removable media access"
+      ],
+      "result": "Execution was blocked before malware established persistence.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Block unauthorised USB devices",
+        "Train staff on found-media risks"
+      ]
+    },
+    {
+      "id": "SOL-013",
+      "incident_id": "INC-013",
+      "incident_type": "Web Application Attack",
+      "problem": "The public website was modified by an unauthorised user and displayed attacker-controlled content.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed web shell",
+        "Restored website",
+        "Patched vulnerable plugin",
+        "Rotated administrative credentials"
+      ],
+      "result": "The website was unavailable for 34 minutes. No customer database access was identified.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Patch internet-facing applications quickly",
+        "Monitor web directories for unexpected files"
+      ]
+    },
+    {
+      "id": "SOL-014",
+      "incident_id": "INC-014",
+      "incident_type": "Data Loss",
+      "problem": "A user attempted to collect and upload a large volume of internal documents shortly before leaving the company.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Suspended account",
+        "Blocked upload destination",
+        "Preserved forensic evidence",
+        "Reviewed file access logs"
+      ],
+      "result": "Approximately 1.8 GB of data was staged but the upload was blocked.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Improve insider-risk monitoring",
+        "Review access immediately during offboarding"
+      ]
+    },
+    {
+      "id": "SOL-015",
+      "incident_id": "INC-015",
+      "incident_type": "Phishing",
+      "problem": "Employees were directed to a counterfeit SSO portal designed to capture corporate credentials.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Blocked domain",
+        "Reset exposed credentials",
+        "Revoked sessions",
+        "Added email detection rules"
+      ],
+      "result": "Five credentials were submitted, but MFA prevented successful account takeover.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Use phishing-resistant MFA",
+        "Monitor newly registered lookalike domains"
+      ]
+    },
+    {
+      "id": "SOL-016",
+      "incident_id": "INC-016",
+      "incident_type": "Cloud Compromise",
+      "problem": "A cloud account was used to launch an instance running cryptocurrency mining software.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Revoked API key",
+        "Terminated rogue instance",
+        "Reviewed IAM activity",
+        "Rotated cloud credentials"
+      ],
+      "result": "The attacker incurred approximately \u00a3180 in cloud charges. No production data was accessed.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Use short-lived cloud credentials",
+        "Alert on unusual resource creation"
+      ]
+    },
+    {
+      "id": "SOL-017",
+      "incident_id": "INC-017",
+      "incident_type": "Persistence",
+      "problem": "Security monitoring detected a suspicious scheduled task configured to execute a binary at user logon.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated workstation",
+        "Removed scheduled task",
+        "Deleted malicious executable",
+        "Scanned endpoint"
+      ],
+      "result": "Persistence was removed before additional payloads were downloaded.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Monitor scheduled task creation",
+        "Restrict executable downloads"
+      ]
+    },
+    {
+      "id": "SOL-018",
+      "incident_id": "INC-018",
+      "incident_type": "Vulnerability Exploitation",
+      "problem": "An internet-facing VPN appliance was exploited using a known vulnerability that had not yet been patched.",
+      "investigation_approach": [
+        "Identify exploit requests in appliance logs.",
+        "Confirm vulnerable firmware version.",
+        "Review administrative actions after exploitation.",
+        "Hunt for persistence and internal access."
+      ],
+      "actions_taken": [
+        "Disconnected appliance",
+        "Applied vendor patch",
+        "Rotated credentials",
+        "Reviewed configuration and logs"
+      ],
+      "result": "The attacker obtained temporary administrative access but no internal compromise was confirmed.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Prioritise internet-facing critical vulnerabilities",
+        "Reduce patching maintenance delays"
+      ]
+    },
+    {
+      "id": "SOL-019",
+      "incident_id": "INC-019",
+      "incident_type": "Credential Attack",
+      "problem": "A malfunctioning application repeatedly attempted authentication using outdated credentials.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Stopped affected service",
+        "Updated stored credentials",
+        "Unlocked accounts",
+        "Reviewed authentication logs"
+      ],
+      "result": "No malicious activity was identified and normal authentication resumed.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Improve service credential rotation procedures",
+        "Alert on abnormal account lockout patterns"
+      ]
+    },
+    {
+      "id": "SOL-020",
+      "incident_id": "INC-020",
+      "incident_type": "Endpoint Compromise",
+      "problem": "A browser extension installed by several employees was found to collect browsing information.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed extension",
+        "Blocked extension ID",
+        "Reset affected browser sessions",
+        "Scanned endpoints"
+      ],
+      "result": "Browsing metadata may have been exposed. No corporate passwords were recovered by the extension.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Use managed browser policies",
+        "Restrict extension installation"
+      ]
+    },
+    {
+      "id": "SOL-021",
+      "incident_id": "INC-021",
+      "incident_type": "Denial of Service",
+      "problem": "The public API experienced a distributed denial-of-service attack causing intermittent service degradation.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Enabled DDoS protection",
+        "Applied rate limits",
+        "Blocked abusive traffic",
+        "Scaled API infrastructure"
+      ],
+      "result": "API availability returned to normal after 52 minutes.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Apply rate limits to public endpoints",
+        "Maintain tested DDoS response procedures"
+      ]
+    },
+    {
+      "id": "SOL-022",
+      "incident_id": "INC-022",
+      "incident_type": "Account Compromise",
+      "problem": "An attacker compromised a developer account and used it to access source code and CI/CD resources.",
+      "investigation_approach": [
+        "Review identity-provider and repository authentication.",
+        "Identify tokens created or used by the account.",
+        "Review CI/CD executions.",
+        "Check source repositories for malicious changes."
+      ],
+      "actions_taken": [
+        "Revoked sessions",
+        "Rotated repository tokens",
+        "Disabled account",
+        "Audited pipeline activity"
+      ],
+      "result": "Several repositories were accessed. No malicious production deployment was completed.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Use short-lived tokens",
+        "Protect developer endpoints with stronger controls"
+      ]
+    },
+    {
+      "id": "SOL-023",
+      "incident_id": "INC-023",
+      "incident_type": "Data Loss",
+      "problem": "An employee accidentally emailed a spreadsheet containing customer information to a personal address.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Requested deletion",
+        "Blocked external forwarding temporarily",
+        "Reported incident",
+        "Reviewed data exposure"
+      ],
+      "result": "The recipient confirmed deletion and no further distribution was identified.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Improve data loss prevention controls",
+        "Train staff to verify external recipients"
+      ]
+    },
+    {
+      "id": "SOL-024",
+      "incident_id": "INC-024",
+      "incident_type": "Credential Attack",
+      "problem": "Security monitoring detected abnormal Kerberos service ticket requests consistent with credential harvesting.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated workstation",
+        "Reset service account passwords",
+        "Reviewed domain controller logs",
+        "Removed malware"
+      ],
+      "result": "No privileged account compromise was confirmed.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Use stronger service account passwords",
+        "Monitor abnormal Kerberos ticket activity"
+      ]
+    },
+    {
+      "id": "SOL-025",
+      "incident_id": "INC-025",
+      "incident_type": "Discovery",
+      "problem": "A developer workstation performed broad internal network scanning outside normal testing activity.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated endpoint",
+        "Removed tool",
+        "Reviewed network logs",
+        "Interviewed user"
+      ],
+      "result": "No exploitation followed the scanning activity.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Restrict security tools to authorised systems",
+        "Monitor unusual internal scanning"
+      ]
+    },
+    {
+      "id": "SOL-026",
+      "incident_id": "INC-026",
+      "incident_type": "Email Compromise",
+      "problem": "An executive mailbox was compromised and used to request an urgent supplier payment.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Reset account",
+        "Removed forwarding rule",
+        "Revoked sessions",
+        "Contacted finance team"
+      ],
+      "result": "The fraudulent payment was stopped before funds were transferred.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Alert on mailbox forwarding rules",
+        "Require payment verification for unusual requests"
+      ]
+    },
+    {
+      "id": "SOL-027",
+      "incident_id": "INC-027",
+      "incident_type": "Supply Chain",
+      "problem": "A production container was found to use a base image containing a critical remotely exploitable vulnerability.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed vulnerable image",
+        "Rebuilt container",
+        "Patched base image",
+        "Added registry scanning"
+      ],
+      "result": "No exploitation was detected before the vulnerable image was replaced.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Enforce image scanning in CI/CD",
+        "Maintain supported base images"
+      ]
+    },
+    {
+      "id": "SOL-028",
+      "incident_id": "INC-028",
+      "incident_type": "Lateral Movement",
+      "problem": "Security telemetry detected remote WMI execution from a compromised workstation.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled compromised accounts",
+        "Isolated hosts",
+        "Reset administrator credentials",
+        "Hunted for additional activity"
+      ],
+      "result": "Three servers were accessed but no persistent malware was found.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Limit administrative credentials",
+        "Monitor remote WMI execution"
+      ]
+    },
+    {
+      "id": "SOL-029",
+      "incident_id": "INC-029",
+      "incident_type": "Credential Exposure",
+      "problem": "A developer accidentally committed a cloud API key to a public repository.",
+      "investigation_approach": [
+        "Determine when the secret became public.",
+        "Review repository history and forks.",
+        "Audit API usage during the exposure window.",
+        "Rotate all affected secrets."
+      ],
+      "actions_taken": [
+        "Revoked API key",
+        "Removed secret from repository",
+        "Reviewed cloud activity",
+        "Moved secrets to vault"
+      ],
+      "result": "The key was publicly visible for 11 minutes. No unauthorised cloud activity was detected.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Use secret management systems",
+        "Scan repositories for credentials"
+      ]
+    },
+    {
+      "id": "SOL-030",
+      "incident_id": "INC-030",
+      "incident_type": "Discovery",
+      "problem": "A workstation generated an unusual volume of LDAP queries against the corporate directory.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated workstation",
+        "Disabled compromised account",
+        "Reviewed directory logs",
+        "Removed malicious tooling"
+      ],
+      "result": "Directory information was enumerated but no privileged changes were made.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Monitor directory enumeration",
+        "Reduce unnecessary directory visibility"
+      ]
+    },
+    {
+      "id": "SOL-031",
+      "incident_id": "INC-031",
+      "incident_type": "Malware",
+      "problem": "A malicious spreadsheet attachment attempted to execute code when opened by a finance employee.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Quarantined attachment",
+        "Isolated endpoint",
+        "Blocked sender domain",
+        "Scanned workstation"
+      ],
+      "result": "The payload was blocked before persistence was established.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Disable macros from untrusted documents",
+        "Improve attachment sandboxing"
+      ]
+    },
+    {
+      "id": "SOL-032",
+      "incident_id": "INC-032",
+      "incident_type": "Privilege Escalation",
+      "problem": "An application account was used to obtain elevated privileges on a Linux server.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed vulnerable sudo rule",
+        "Rotated credentials",
+        "Reviewed server integrity",
+        "Applied configuration hardening"
+      ],
+      "result": "The attacker obtained root privileges briefly but did not access other servers.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Audit sudo permissions",
+        "Apply least privilege to service accounts"
+      ]
+    },
+    {
+      "id": "SOL-033",
+      "incident_id": "INC-033",
+      "incident_type": "Third-Party Risk",
+      "problem": "A supplier account was compromised and used to access a restricted partner environment.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled supplier account",
+        "Revoked VPN access",
+        "Contacted supplier",
+        "Reviewed downloaded files"
+      ],
+      "result": "The attacker downloaded internal documentation but no customer data was accessed.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Require MFA for suppliers",
+        "Review third-party access regularly"
+      ]
+    },
+    {
+      "id": "SOL-034",
+      "incident_id": "INC-034",
+      "incident_type": "Destructive Malware",
+      "problem": "Endpoint monitoring detected a destructive malware process attempting to delete local and shared files.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled administrator account",
+        "Isolated affected hosts",
+        "Blocked executable hash",
+        "Restored files from backups"
+      ],
+      "result": "Limited files were deleted before containment and were recovered from backups.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Protect backup infrastructure",
+        "Restrict administrator credentials"
+      ]
+    },
+    {
+      "id": "SOL-035",
+      "incident_id": "INC-035",
+      "incident_type": "Social Engineering",
+      "problem": "Employees were redirected to a fake software update page that attempted to deliver malware.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Blocked malicious domain",
+        "Removed downloaded files",
+        "Scanned endpoints",
+        "Added web filtering rule"
+      ],
+      "result": "Two employees downloaded the fake update but endpoint protection blocked execution.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Improve web filtering",
+        "Educate users about browser update prompts"
+      ]
+    },
+    {
+      "id": "SOL-036",
+      "incident_id": "INC-036",
+      "incident_type": "Cloud Security",
+      "problem": "An attacker attempted to elevate privileges within the cloud environment using a compromised developer identity.",
+      "investigation_approach": [
+        "Review cloud IAM policy changes.",
+        "Identify the identity that performed escalation.",
+        "Audit privileged API calls.",
+        "Verify production resources were not modified."
+      ],
+      "actions_taken": [
+        "Reverted IAM changes",
+        "Disabled compromised identity",
+        "Rotated credentials",
+        "Audited cloud activity"
+      ],
+      "result": "The attacker obtained administrative privileges for approximately eight minutes but did not modify production workloads.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Prevent self-escalation in IAM",
+        "Use just-in-time privileged access"
+      ]
+    },
+    {
+      "id": "SOL-037",
+      "incident_id": "INC-037",
+      "incident_type": "Phishing",
+      "problem": "A compromised employee mailbox was used to send phishing messages to colleagues.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Secured compromised mailbox",
+        "Removed malicious messages",
+        "Blocked phishing URL",
+        "Reset affected credentials"
+      ],
+      "result": "Seven employees clicked the link; MFA prevented account takeover in all cases.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Detect anomalous internal mail",
+        "Use phishing-resistant MFA"
+      ]
+    },
+    {
+      "id": "SOL-038",
+      "incident_id": "INC-038",
+      "incident_type": "Access Control",
+      "problem": "A routine access review identified excessive database privileges assigned to an application account.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed excessive privileges",
+        "Reviewed database accounts",
+        "Tested application functionality",
+        "Documented required permissions"
+      ],
+      "result": "No misuse was identified and the application continued operating normally.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Perform regular access reviews",
+        "Apply least privilege during migrations"
+      ]
+    },
+    {
+      "id": "SOL-039",
+      "incident_id": "INC-039",
+      "incident_type": "Drive-by Compromise",
+      "problem": "Employees visiting a compromised external website were redirected toward malicious content.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Blocked compromised website",
+        "Scanned affected endpoints",
+        "Reviewed proxy logs",
+        "Notified users"
+      ],
+      "result": "No successful endpoint compromise was confirmed.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Improve web isolation",
+        "Monitor high-risk external domains"
+      ]
+    },
+    {
+      "id": "SOL-040",
+      "incident_id": "INC-040",
+      "incident_type": "Data Exfiltration",
+      "problem": "Data loss prevention controls detected a large transfer of source code to an external storage service.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Blocked transfer",
+        "Suspended external sharing",
+        "Reviewed accessed files",
+        "Contacted employee"
+      ],
+      "result": "The transfer was blocked before completion and no confirmed data loss occurred.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Strengthen DLP policies",
+        "Provide approved remote file-sharing methods"
+      ]
+    },
+    {
+      "id": "SOL-041",
+      "incident_id": "INC-041",
+      "incident_type": "Credential Theft",
+      "problem": "Endpoint telemetry detected attempts to extract credentials from a domain-joined workstation.",
+      "investigation_approach": [
+        "Inspect credential-access telemetry.",
+        "Identify processes accessing LSASS.",
+        "Determine which credentials may have been exposed.",
+        "Hunt for subsequent use of stolen credentials."
+      ],
+      "actions_taken": [
+        "Isolated workstation",
+        "Reset exposed credentials",
+        "Revoked sessions",
+        "Performed credential hunting"
+      ],
+      "result": "Several user credentials may have been exposed, but no domain administrator credentials were recovered.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Use privileged access workstations",
+        "Monitor credential access attempts"
+      ]
+    },
+    {
+      "id": "SOL-042",
+      "incident_id": "INC-042",
+      "incident_type": "Network Security",
+      "problem": "A firewall rule unexpectedly exposed an internal service to the internet.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Removed malicious rule",
+        "Disabled account",
+        "Reviewed firewall logs",
+        "Rotated administrator credentials"
+      ],
+      "result": "The service was exposed for 27 minutes. No confirmed exploitation occurred.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Require approval for firewall changes",
+        "Alert on out-of-hours configuration changes"
+      ]
+    },
+    {
+      "id": "SOL-043",
+      "incident_id": "INC-043",
+      "incident_type": "Supply Chain",
+      "problem": "A security scan identified a critical vulnerability in a third-party library used by a production application.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Updated dependency",
+        "Rebuilt application",
+        "Performed regression testing",
+        "Reviewed application logs"
+      ],
+      "result": "No exploitation was detected before the dependency was patched.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Automate dependency scanning",
+        "Track vulnerable components continuously"
+      ]
+    },
+    {
+      "id": "SOL-044",
+      "incident_id": "INC-044",
+      "incident_type": "Credential Attack",
+      "problem": "An internet-facing Linux server was subjected to automated SSH brute-force attempts.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled password authentication",
+        "Enabled key-based access",
+        "Blocked attacking IPs",
+        "Reviewed SSH logs"
+      ],
+      "result": "No successful login was identified.",
+      "effectiveness": "Medium",
+      "lessons_learned": [
+        "Disable password-based SSH authentication",
+        "Use network-level access controls"
+      ]
+    },
+    {
+      "id": "SOL-045",
+      "incident_id": "INC-045",
+      "incident_type": "Persistence",
+      "problem": "A previously unknown service account was discovered with elevated privileges.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled account",
+        "Removed group membership",
+        "Reset administrator credentials",
+        "Hunted for persistence"
+      ],
+      "result": "No use of the account was observed after creation.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Alert on privileged account creation",
+        "Review service accounts regularly"
+      ]
+    },
+    {
+      "id": "SOL-046",
+      "incident_id": "INC-046",
+      "incident_type": "Cloud Misconfiguration",
+      "problem": "A cloud storage container containing internal analytics data was accidentally configured for anonymous access.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled anonymous access",
+        "Reviewed access logs",
+        "Removed manual configuration",
+        "Added policy enforcement"
+      ],
+      "result": "The data was exposed for approximately two hours. No confirmed download of sensitive records was identified.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Enforce cloud policies centrally",
+        "Avoid manual production configuration changes"
+      ]
+    },
+    {
+      "id": "SOL-047",
+      "incident_id": "INC-047",
+      "incident_type": "Lateral Movement",
+      "problem": "An administrator account connected to several Windows servers through RDP outside normal working hours.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled account",
+        "Terminated RDP sessions",
+        "Reset credentials",
+        "Reviewed server activity"
+      ],
+      "result": "Four servers were accessed. No malicious configuration changes were found.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Restrict RDP access",
+        "Require managed devices for privileged access"
+      ]
+    },
+    {
+      "id": "SOL-048",
+      "incident_id": "INC-048",
+      "incident_type": "Cloud Account Compromise",
+      "problem": "A user granted a malicious third-party application permission to access their corporate mailbox.",
+      "investigation_approach": [
+        "Identify the OAuth application and requested scopes.",
+        "Review consent and mailbox access timestamps.",
+        "Revoke application tokens.",
+        "Search for other users who consented to the application."
+      ],
+      "actions_taken": [
+        "Revoked application consent",
+        "Reset credentials",
+        "Revoked sessions",
+        "Audited mailbox access"
+      ],
+      "result": "The application accessed a limited number of emails before permissions were revoked.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Restrict user OAuth consent",
+        "Monitor suspicious application registrations"
+      ]
+    },
+    {
+      "id": "SOL-049",
+      "incident_id": "INC-049",
+      "incident_type": "Ransomware",
+      "problem": "An attacker attempted to access the backup management system during a wider ransomware campaign.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Disabled compromised account",
+        "Isolated backup console",
+        "Protected backup repositories",
+        "Rotated administrative credentials"
+      ],
+      "result": "No backups were deleted or encrypted and recovery infrastructure remained available.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Isolate backup credentials",
+        "Use immutable backups",
+        "Protect backup management interfaces"
+      ]
+    },
+    {
+      "id": "SOL-050",
+      "incident_id": "INC-050",
+      "incident_type": "Data Exfiltration",
+      "problem": "A compromised engineering workstation attempted to transmit system information through DNS queries.",
+      "investigation_approach": [
+        "Review relevant security logs and the incident timeline.",
+        "Identify affected users, hosts, systems, and external indicators.",
+        "Determine the initial access or triggering event.",
+        "Check for successful compromise, lateral movement, persistence, or data access.",
+        "Validate containment and confirm malicious activity has stopped."
+      ],
+      "actions_taken": [
+        "Isolated workstation",
+        "Blocked malicious domain",
+        "Removed malware",
+        "Reviewed DNS logs"
+      ],
+      "result": "Host information was transmitted but no sensitive customer data was identified in the traffic.",
+      "effectiveness": "High",
+      "lessons_learned": [
+        "Inspect DNS for encoded traffic",
+        "Improve endpoint detection coverage"
+      ]
+    }
+  ]
+}

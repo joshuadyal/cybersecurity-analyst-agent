@@ -1,0 +1,229 @@
+{
+  "data": [
+    {
+      "id": "POL-001",
+      "name": "Privileged Account Policy",
+      "version": "3.0",
+      "requirements": [
+        "All privileged accounts must use MFA.",
+        "Privileged credentials must not be shared.",
+        "Privileged accounts must be reviewed quarterly.",
+        "Administrative access must use approved managed devices."
+      ],
+      "monitoring_requirements": [
+        "Privileged authentication must be logged.",
+        "Suspicious privileged activity must be investigated.",
+        "Unexpected privilege changes must generate an alert."
+      ],
+      "exceptions": "Exceptions require approval from the Security Manager.",
+      "related_incidents": [
+        "INC-001",
+        "INC-004",
+        "INC-028",
+        "INC-032",
+        "INC-036",
+        "INC-042",
+        "INC-045"
+      ]
+    },
+    {
+      "id": "POL-002",
+      "name": "Multi-Factor Authentication Policy",
+      "version": "2.5",
+      "requirements": [
+        "MFA is mandatory for privileged accounts.",
+        "MFA is mandatory for remote access.",
+        "MFA is required for cloud administration.",
+        "Phishing-resistant MFA should be used for high-risk accounts where supported."
+      ],
+      "monitoring_requirements": [
+        "MFA failures must be logged.",
+        "Repeated MFA failures must be investigated.",
+        "MFA enrolment and method changes must be monitored."
+      ],
+      "exceptions": "Exceptions require documented risk acceptance from the Security Manager.",
+      "related_incidents": [
+        "INC-001",
+        "INC-007",
+        "INC-009",
+        "INC-015",
+        "INC-022",
+        "INC-037",
+        "INC-048"
+      ]
+    },
+    {
+      "id": "POL-003",
+      "name": "Password and Credential Management Policy",
+      "version": "3.1",
+      "requirements": [
+        "Corporate passwords must be unique.",
+        "Passwords must not be stored in source code.",
+        "Service account credentials must be stored in an approved secret-management system.",
+        "Compromised credentials must be rotated immediately."
+      ],
+      "monitoring_requirements": [
+        "Credential exposure alerts must be investigated.",
+        "Service account use must be logged.",
+        "Authentication anomalies must be monitored."
+      ],
+      "exceptions": "Exceptions require approval from the Security Manager and documented compensating controls.",
+      "related_incidents": [
+        "INC-001",
+        "INC-007",
+        "INC-019",
+        "INC-022",
+        "INC-029",
+        "INC-033",
+        "INC-041"
+      ]
+    },
+    {
+      "id": "POL-004",
+      "name": "Phishing and Email Security Policy",
+      "version": "2.2",
+      "requirements": [
+        "Users must report suspected phishing.",
+        "Macros from untrusted documents must be blocked.",
+        "External email links must be inspected by security controls.",
+        "Users must not enter corporate credentials into unverified pages."
+      ],
+      "monitoring_requirements": [
+        "Malicious email campaigns must be monitored.",
+        "Reported phishing messages must be analysed.",
+        "Suspicious mailbox forwarding rules must be investigated."
+      ],
+      "exceptions": "Security Operations may approve temporary exceptions for controlled security testing.",
+      "related_incidents": [
+        "INC-002",
+        "INC-015",
+        "INC-026",
+        "INC-031",
+        "INC-037"
+      ]
+    },
+    {
+      "id": "POL-005",
+      "name": "Cloud Security and IAM Policy",
+      "version": "2.7",
+      "requirements": [
+        "Cloud resources must use least-privilege IAM.",
+        "Public access must be explicitly approved.",
+        "Production IAM changes must be auditable.",
+        "Cloud secrets must not be embedded in source code."
+      ],
+      "monitoring_requirements": [
+        "Public resource exposure must be continuously monitored.",
+        "IAM privilege changes must be logged.",
+        "Unexpected resource creation must generate an alert.",
+        "Cloud audit logs must be retained."
+      ],
+      "exceptions": "Exceptions require approval from the Cloud Security Owner and Security Manager.",
+      "related_incidents": [
+        "INC-006",
+        "INC-016",
+        "INC-027",
+        "INC-029",
+        "INC-036",
+        "INC-046"
+      ]
+    },
+    {
+      "id": "POL-006",
+      "name": "Endpoint and Removable Media Policy",
+      "version": "2.4",
+      "requirements": [
+        "Only managed endpoints may access corporate resources.",
+        "Unauthorised software must not be installed.",
+        "Removable media must be controlled by endpoint security.",
+        "Endpoint protection must remain enabled."
+      ],
+      "monitoring_requirements": [
+        "Endpoint security alerts must be investigated.",
+        "Unauthorised software installations must be logged.",
+        "USB device activity must be monitored where technically possible."
+      ],
+      "exceptions": "Security Operations may approve temporary exceptions for testing or forensic work.",
+      "related_incidents": [
+        "INC-003",
+        "INC-012",
+        "INC-017",
+        "INC-035",
+        "INC-039",
+        "INC-041"
+      ]
+    },
+    {
+      "id": "POL-007",
+      "name": "Vulnerability and Patch Management Policy",
+      "version": "3.3",
+      "requirements": [
+        "Critical internet-facing vulnerabilities must be prioritised.",
+        "Production systems must use supported software versions.",
+        "Critical vulnerabilities must have documented remediation plans.",
+        "Container and application dependencies must be scanned before production release."
+      ],
+      "monitoring_requirements": [
+        "Vulnerability scans must run regularly.",
+        "Internet-facing assets must be monitored for new critical vulnerabilities.",
+        "Unpatched critical systems must be reported to Security Operations."
+      ],
+      "exceptions": "Risk exceptions require approval from the Security Manager and system owner.",
+      "related_incidents": ["INC-018", "INC-027", "INC-043"]
+    },
+    {
+      "id": "POL-008",
+      "name": "Data Protection and DLP Policy",
+      "version": "2.6",
+      "requirements": [
+        "Sensitive company data must only be stored in approved locations.",
+        "Customer data must not be sent to personal accounts.",
+        "Large external transfers of sensitive data must be monitored.",
+        "Offboarding users must have access reviewed promptly."
+      ],
+      "monitoring_requirements": [
+        "Sensitive external transfers must generate DLP alerts.",
+        "Unusual bulk downloads must be investigated.",
+        "Data access by departing employees must be reviewed."
+      ],
+      "exceptions": "Exceptions require approval from the Data Protection Owner and Security Manager.",
+      "related_incidents": ["INC-014", "INC-023", "INC-040", "INC-050"]
+    },
+    {
+      "id": "POL-009",
+      "name": "Backup and Disaster Recovery Policy",
+      "version": "4.0",
+      "requirements": [
+        "Critical systems must have tested backups.",
+        "Backup credentials must be separate from production credentials.",
+        "Backup repositories must be protected from unauthorised deletion.",
+        "Recovery testing must be performed regularly."
+      ],
+      "monitoring_requirements": [
+        "Backup failures must be monitored.",
+        "Unexpected backup deletion attempts must be investigated.",
+        "Backup administrative access must be logged."
+      ],
+      "exceptions": "Exceptions require approval from the Infrastructure Owner and Security Manager.",
+      "related_incidents": ["INC-005", "INC-034", "INC-049"]
+    },
+    {
+      "id": "POL-010",
+      "name": "Third-Party Access Policy",
+      "version": "2.1",
+      "requirements": [
+        "Third-party access must be approved by a system owner.",
+        "Third-party accounts must use MFA where supported.",
+        "Third-party access must be reviewed at least quarterly.",
+        "Third-party accounts must be disabled when access is no longer required."
+      ],
+      "monitoring_requirements": [
+        "Third-party authentication must be logged.",
+        "Unusual third-party downloads must be investigated.",
+        "Inactive third-party accounts must be reviewed."
+      ],
+      "exceptions": "Exceptions require approval from the Security Manager and relevant system owner.",
+      "related_incidents": ["INC-033"]
+    }
+  ]
+}
